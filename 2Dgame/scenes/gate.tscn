@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1hajjra8ao42"]
+
+[ext_resource type="Texture2D" uid="uid://dgebku4oayqfe" path="res://prefabs/Door sprites/custom.png" id="1_lxi1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnsr0"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uonqq"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hldso"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgy2c"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2pp"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orb11"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1at1q"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp6cs"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg0mo"]
+atlas = ExtResource("1_lxi1a")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qte6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnsr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uonqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hldso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgy2c")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c2pp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orb11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1at1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp6cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg0mo")
+}],
+"loop": true,
+"name": &"open",
+"speed": 8.0
+}]
+
+[node name="gate" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qte6q")
+animation = &"idle"
+offset = Vector2(1, 0)

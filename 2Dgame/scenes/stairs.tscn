@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chspr576or45q"]
+
+[ext_resource type="Script" path="res://scripts/stairs.gd" id="1_qfrf5"]
+
+[node name="stairs" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_qfrf5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

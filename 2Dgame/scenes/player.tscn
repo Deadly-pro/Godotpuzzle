@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://coyerkmic7oyn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_d05kw"]
+[ext_resource type="Texture2D" uid="uid://dntdusof861ie" path="res://prefabs/Samurai/Idle.png" id="1_urjtr"]
+[ext_resource type="Texture2D" uid="uid://bn47k5rluxxqk" path="res://prefabs/Samurai/Run.png" id="2_n4lyg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si45b"]
+size = Vector2(7.2472, 18.917)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvhpb"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aft3m"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkk34"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpg20"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa64u"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pofq6"]
+atlas = ExtResource("1_urjtr")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25dfl"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew0wb"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erl4x"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2ti6"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_323mi"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7txb1"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fex08"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcigo"]
+atlas = ExtResource("2_n4lyg")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dken7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvhpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aft3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkk34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpg20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa64u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pofq6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25dfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew0wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erl4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2ti6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_323mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7txb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fex08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcigo")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 3
+position = Vector2(-7, -5)
+scale = Vector2(1, 0.802444)
+collision_layer = 3
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_d05kw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 21)
+scale = Vector2(1.65581, 1.90305)
+shape = SubResource("RectangleShape2D_si45b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -5)
+scale = Vector2(0.6875, 0.710938)
+sprite_frames = SubResource("SpriteFrames_dken7")
+animation = &"run"
+autoplay = "idle"
+frame = 4
+frame_progress = 0.765071
+offset = Vector2(1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

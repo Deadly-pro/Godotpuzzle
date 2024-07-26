@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://c13enc4tft7x"]
+
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_hhl30"]
+[ext_resource type="Texture2D" uid="uid://c1xnpkpu57cc4" path="res://prefabs/background.jpg" id="1_w6xjy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhl30")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 319)
+
+[node name="Background2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(576, 315)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("1_w6xjy")
+
+[node name="lv1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 301.0
+offset_right = 145.0
+offset_bottom = 332.0
+scale = Vector2(2, 2)
+button_mask = 7
+text = "Level 1
+"
+flat = true
+icon_alignment = 1
+
+[node name="lv2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 301.0
+offset_right = 371.0
+offset_bottom = 332.0
+scale = Vector2(2, 2)
+button_mask = 7
+text = "Level 2
+"
+flat = true
+icon_alignment = 1
+
+[node name="lv3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 300.0
+offset_right = 595.0
+offset_bottom = 331.0
+scale = Vector2(2, 2)
+button_mask = 7
+text = "Level 3
+"
+flat = true
+icon_alignment = 1
+
+[node name="lv4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 295.0
+offset_right = 770.0
+offset_bottom = 326.0
+scale = Vector2(2, 2)
+button_mask = 7
+text = "Level 4
+"
+flat = true
+icon_alignment = 1
+
+[node name="lv5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 298.0
+offset_right = 942.0
+offset_bottom = 329.0
+scale = Vector2(2, 2)
+button_mask = 7
+text = "Level 5
+"
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]
