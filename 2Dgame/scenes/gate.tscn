@@ -1,6 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1hajjra8ao42"]
+[gd_scene load_steps=14 format=3 uid="uid://b1hajjra8ao42"]
 
+[ext_resource type="Script" path="res://scripts/gate.gd" id="1_5gylq"]
 [ext_resource type="Texture2D" uid="uid://dgebku4oayqfe" path="res://prefabs/Door sprites/custom.png" id="1_lxi1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwpe4"]
+size = Vector2(18, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnsr0"]
 atlas = ExtResource("1_lxi1a")
@@ -83,7 +87,12 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="gate" type="Area2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_5gylq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_rwpe4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qte6q")
