@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c13enc4tft7x"]
+[gd_scene load_steps=2 format=3 uid="uid://c13enc4tft7x"]
 
 [ext_resource type="Script" path="res://scripts/control.gd" id="1_hhl30"]
-[ext_resource type="Texture2D" uid="uid://c1xnpkpu57cc4" path="res://prefabs/background.jpg" id="1_w6xjy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,12 +14,6 @@ script = ExtResource("1_hhl30")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 319)
 
-[node name="Background2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(576, 315)
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("1_w6xjy")
-
 [node name="lv1" type="Button" parent="."]
 layout_mode = 0
 offset_left = 83.0
@@ -31,7 +24,6 @@ scale = Vector2(2, 2)
 button_mask = 7
 text = "Level 1
 "
-flat = true
 icon_alignment = 1
 
 [node name="lv2" type="Button" parent="."]
@@ -44,7 +36,6 @@ scale = Vector2(2, 2)
 button_mask = 7
 text = "Level 2
 "
-flat = true
 icon_alignment = 1
 
 [node name="lv3" type="Button" parent="."]
@@ -57,7 +48,6 @@ scale = Vector2(2, 2)
 button_mask = 7
 text = "Level 3
 "
-flat = true
 icon_alignment = 1
 
 [node name="lv4" type="Button" parent="."]
@@ -70,7 +60,6 @@ scale = Vector2(2, 2)
 button_mask = 7
 text = "Level 4
 "
-flat = true
 icon_alignment = 1
 
 [node name="lv5" type="Button" parent="."]
@@ -83,7 +72,6 @@ scale = Vector2(2, 2)
 button_mask = 7
 text = "Level 5
 "
-flat = true
 icon_alignment = 1
 
 [connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]

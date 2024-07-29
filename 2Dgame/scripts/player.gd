@@ -1,13 +1,15 @@
 extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
-
+@onready var keylb=$keys
+var tag ="player"
+var inventory={"key":0,"coin":0}
+var invsprdat={"heart":0,"power":1,"key":7}
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
+func _ready():
+	pass
 func _physics_process(delta):
 	var directiony = Input.get_axis("forward", "downward")
 	# Get the input direction and handle the movement/deceleration.
@@ -39,6 +41,10 @@ func _physics_process(delta):
 	if directiony:
 		velocity.y = directiony * SPEED 
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+		velocity.y = move_toward(velocity.y, 0, SPEED) 
 	move_and_slide()
+	keylb.text=str(inventory["key"])
+func _picked(item):
+	match(item):
+		"key": inventory["key"]+=1
+		"coin":inventory["coin"]+=1

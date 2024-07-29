@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5aadrv3kmc61"]
+[gd_scene load_steps=17 format=3 uid="uid://c5aadrv3kmc61"]
 
 [ext_resource type="Texture2D" uid="uid://ds300tu6sjvfh" path="res://prefabs/GameItemsAnims-Sheet.png" id="1_vi44v"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="1_yndej"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7j4e"]
 radius = 6.32456
@@ -94,10 +95,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 11.0
+"speed": 10.0
 }]
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_yndej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k7j4e")
@@ -106,3 +108,7 @@ shape = SubResource("CircleShape2D_k7j4e")
 sprite_frames = SubResource("SpriteFrames_ki41s")
 animation = &"idle"
 autoplay = "idle"
+frame = 7
+frame_progress = 0.235494
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
