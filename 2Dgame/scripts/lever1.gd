@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if inrange && Input.is_action_just_pressed("interact"):
 		print("Interact")
 		if animator.animation=="off":
@@ -26,11 +26,11 @@ func _process(delta):
 			gate._setstate("off")
 
 
-func _on_area_2d_body_entered(body:CharacterBody2D):
+func _on_area_2d_body_entered(_body):
 	label.show()
 	inrange=true
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	label.hide()
 	inrange=false

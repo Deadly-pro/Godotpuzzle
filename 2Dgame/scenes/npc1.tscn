@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8jnnsxpe8jfn"]
+[gd_scene load_steps=22 format=3 uid="uid://c8jnnsxpe8jfn"]
 
 [ext_resource type="Script" path="res://scripts/npc1.gd" id="1_1djfg"]
 [ext_resource type="Texture2D" uid="uid://dnaq57a237rss" path="res://prefabs/NPCS/Male2.png" id="1_uuks8"]
@@ -142,11 +142,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7k0qt"]
+radius = 64.3817
+
 [node name="npc" type="CharacterBody2D"]
 z_index = 6
 position = Vector2(449, 255)
 motion_mode = 1
 script = ExtResource("1_1djfg")
+current_state = "MOVE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -154,18 +158,23 @@ shape = SubResource("CapsuleShape2D_wso8j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7jxfm")
-animation = &"idle"
+animation = &"walk_sd"
 autoplay = "idle"
-frame_progress = 0.197548
+frame_progress = 0.57648
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Label" type="Label" parent="."]
-z_index = 100
+z_index = 10
 offset_left = -46.0
 offset_top = -51.0
 offset_right = 49.0
 offset_bottom = -28.0
 text = "IM HERE!!!!!!!"
+
+[node name="interaction area" type="Area2D" parent="."]
+
+[node name="circle" type="CollisionShape2D" parent="interaction area"]
+shape = SubResource("CircleShape2D_7k0qt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
