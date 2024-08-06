@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://x07ydj73fr3u"]
+
+[ext_resource type="Texture2D" uid="uid://d06qrid1x13fy" path="res://prefabs/Explosions and Extras/prompt.png" id="1_17mna"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -98.0
+offset_top = -127.0
+offset_right = 97.0
+offset_bottom = -39.0
+texture = ExtResource("1_17mna")
+patch_margin_left = 17
+patch_margin_top = 13
+patch_margin_right = 18
+patch_margin_bottom = 20

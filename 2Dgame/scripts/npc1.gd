@@ -2,7 +2,7 @@ extends CharacterBody2D
 const speed = 100
 var is_moving=true
 var is_chating=false
-@onready var area=$"interaction area"
+var in_range=false
 var states=[
 	"IDLE",
 	"NEW_DIR",
@@ -15,10 +15,9 @@ var prev_pos
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_pos=position
+	print("ready")
 
 func _process(delta):
-	print(position)
-	
 	if current_state == states[0] or current_state == states[1]:
 		$AnimatedSprite2D.play("idle")
 	elif current_state == states[2] and !is_chating:
@@ -37,6 +36,11 @@ func _process(delta):
 			"IDLE":pass
 			"NEW_DIR":dir=chose([Vector2.RIGHT,Vector2.LEFT,Vector2.DOWN,Vector2.UP]) 
 			"MOVE": move(delta)
+	elif !is_moving:
+		if Input.is_action_just_pressed("interact"):
+			print("chatting")
+			is_chating=true
+			 
 func chose(array):
 	array.shuffle()
 	current_state="MOVE"
@@ -52,3 +56,10 @@ func move(delta):
 				current_state="NEW_DIR"
 				prev_pos=Vector2(0,0) 
 		move_and_slide()
+
+func _on_interaction_area_body_entered(body):
+	if body.has_method("_picked"):
+		current_state="IDLE"
+		in_range=true
+		is_moving=false
+		

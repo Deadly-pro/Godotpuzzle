@@ -2725,7 +2725,7 @@ metadata/_edit_lock_ = true
 position = Vector2(443, 540)
 
 [node name="npc" parent="." instance=ExtResource("13_vv8wp")]
-position = Vector2(923, 654)
+position = Vector2(1043, 697)
 
 [node name="lever" parent="." instance=ExtResource("10_ufjmw")]
 z_index = 5

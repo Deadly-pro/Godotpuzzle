@@ -121,10 +121,12 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_4td0h"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 z_index = 3
 position = Vector2(-7, -5)
 scale = Vector2(1, 0.802444)
+collision_layer = 3
+collision_mask = 3
 slide_on_ceiling = false
 script = ExtResource("1_d05kw")
 
@@ -146,7 +148,6 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="keys" type="Label" parent="."]
-z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

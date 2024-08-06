@@ -26,11 +26,13 @@ func _process(_delta):
 			gate._setstate("off")
 
 
-func _on_area_2d_body_entered(_body):
-	label.show()
-	inrange=true
+func _on_area_2d_body_entered(body):
+	if body.has_method("_picked"):
+		label.show()
+		inrange=true
 
 
-func _on_area_2d_body_exited(_body):
-	label.hide()
-	inrange=false
+func _on_area_2d_body_exited(body):
+	if body.has_method("_picked"):
+			label.hide()
+			inrange=false
