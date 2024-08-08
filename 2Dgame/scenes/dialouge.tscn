@@ -1,21 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://x07ydj73fr3u"]
+[gd_scene load_steps=3 format=3 uid="uid://x07ydj73fr3u"]
 
 [ext_resource type="Texture2D" uid="uid://d06qrid1x13fy" path="res://prefabs/Explosions and Extras/prompt.png" id="1_17mna"]
+[ext_resource type="Script" path="res://scripts/dialougenplayer.gd" id="1_i1q57"]
 
-[node name="Control" type="Control"]
+[node name="dialouge" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 288.0
+offset_bottom = 171.0
+script = ExtResource("1_i1q57")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = -98.0
-offset_top = -127.0
-offset_right = 97.0
-offset_bottom = -39.0
+offset_left = -97.0
+offset_top = -132.0
+offset_right = 98.0
+offset_bottom = -44.0
 texture = ExtResource("1_17mna")
 patch_margin_left = 17
 patch_margin_top = 13
 patch_margin_right = 18
 patch_margin_bottom = 20
+
+[node name="name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 16.0
+offset_right = 81.0
+offset_bottom = 56.0
+scale = Vector2(0.8, 0.8)
+text = "Name"
+
+[node name="chat" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 36.0
+offset_right = 93.0
+offset_bottom = 68.0
+scale = Vector2(0.6, 0.6)
+text = "Chat...
+"

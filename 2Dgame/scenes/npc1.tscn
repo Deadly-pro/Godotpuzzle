@@ -160,19 +160,19 @@ shape = SubResource("CapsuleShape2D_wso8j")
 sprite_frames = SubResource("SpriteFrames_7jxfm")
 animation = &"walk_sd"
 autoplay = "idle"
-frame_progress = 0.57648
+frame_progress = 0.596979
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -46.0
 offset_top = -51.0
 offset_right = 49.0
 offset_bottom = -28.0
 size_flags_horizontal = 6
 size_flags_vertical = 8
-text = "IM HERE!!!!!!!"
+text = "[E] to interact
+"
 
 [node name="interaction area" type="Area2D" parent="."]
 collision_layer = 3
@@ -183,8 +183,10 @@ monitorable = false
 [node name="circle" type="CollisionShape2D" parent="interaction area"]
 shape = SubResource("CircleShape2D_7k0qt")
 
-[node name="Control" parent="." instance=ExtResource("3_1i4b0")]
+[node name="dialouge" parent="." instance=ExtResource("3_1i4b0")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="interaction area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction area" to="." method="_on_interaction_area_body_exited"]
 [connection signal="body_shape_entered" from="interaction area" to="." method="_on_interaction_area_body_shape_entered"]
+[connection signal="dialouge_done" from="dialouge" to="." method="_on_control_dialouge_done"]
