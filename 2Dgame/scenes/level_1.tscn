@@ -2747,7 +2747,7 @@ horizontal_alignment = 1
 
 [node name="gate" parent="." instance=ExtResource("3_bhxf0")]
 unique_name_in_owner = true
-z_index = 5
+z_index = 4
 position = Vector2(910, -124)
 scale = Vector2(7.27262, 6.35904)
 

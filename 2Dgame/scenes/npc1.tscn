@@ -158,9 +158,8 @@ shape = SubResource("CapsuleShape2D_wso8j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7jxfm")
-animation = &"walk_sd"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.596979
 
 [node name="Timer" type="Timer" parent="."]
 

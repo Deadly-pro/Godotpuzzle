@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/dialougenplayer.gd" id="1_i1q57"]
 
 [node name="dialouge" type="Control"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 288.0
@@ -26,17 +27,21 @@ patch_margin_bottom = 20
 layout_mode = 0
 offset_left = 21.0
 offset_top = 16.0
-offset_right = 81.0
+offset_right = 117.0
 offset_bottom = 56.0
 scale = Vector2(0.8, 0.8)
 text = "Name"
+fit_content = true
+scroll_following = true
 
 [node name="chat" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 36.0
-offset_right = 93.0
+offset_right = 271.0
 offset_bottom = 68.0
 scale = Vector2(0.6, 0.6)
 text = "Chat...
 "
+fit_content = true
+scroll_following = true
