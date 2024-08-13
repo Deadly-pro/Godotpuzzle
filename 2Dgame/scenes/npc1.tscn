@@ -146,7 +146,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k0qt"]
 radius = 114.039
 
-[node name="npc" type="CharacterBody2D"]
+[node name="village_head" type="CharacterBody2D"]
 z_index = 6
 position = Vector2(449, 255)
 motion_mode = 1

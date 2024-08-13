@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var keylb=$keys
-var tag ="player"
+var can_move=true
 var inventory={"key":0,"coin":0}
 var invsprdat={"heart":0,"power":1,"key":7}
 const SPEED = 300.0
@@ -35,14 +35,14 @@ func _physics_process(delta):
 		elif velocity.x==0:
 			animated_sprite.play("idle")
 	
-	if direction:
+	if direction && can_move:
 		velocity.x = direction * SPEED 
-	else:
+	elif can_move:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if directiony:
+	if directiony && can_move:
 		velocity.y = directiony * SPEED 
-	else:
+	elif can_move:
 		velocity.y = move_toward(velocity.y, 0, SPEED) 
 	move_and_slide()
 	keylb.text=str(inventory["key"])

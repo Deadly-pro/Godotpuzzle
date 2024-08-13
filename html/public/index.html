@@ -1,0 +1,125 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer CTF Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #quiz-area, #game-over {
+            display: none;
+        }
+        #leaderboard-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #leaderboard-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Multiplayer CTF Quiz</h1>
+    </header>
+
+    <main>
+        <section id="player-info">
+            <input type="text" id="player-name" placeholder="Enter your name">
+            <button id="join-game">Join Game</button>
+        </section>
+
+        <section id="quiz-area">
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <p id="question-points"></p>
+            </div>
+            <input type="text" id="answer-input" placeholder="Enter your answer">
+            <button id="submit-answer">Submit Answer</button>
+        </section>
+
+        <section id="game-over">
+            <h2>Game Over!</h2>
+            <button id="play-again">Play Again</button>
+        </section>
+
+        <section id="leaderboard">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard-list"></ul>
+        </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const playerInfo = document.getElementById('player-info');
+        const quizArea = document.getElementById('quiz-area');
+        const gameOver = document.getElementById('game-over');
+        const questionText = document.getElementById('question-text');
+        const questionPoints = document.getElementById('question-points');
+        const answerInput = document.getElementById('answer-input');
+        const leaderboardList = document.getElementById('leaderboard-list');
+
+        document.getElementById('join-game').addEventListener('click', () => {
+            const playerName = document.getElementById('player-name').value;
+            if (playerName) {
+                socket.emit('join game', playerName);
+                playerInfo.style.display = 'none';
+                quizArea.style.display = 'block';
+            }
+        });
+
+        document.getElementById('submit-answer').addEventListener('click', () => {
+            const answer = answerInput.value;
+            socket.emit('submit answer', answer);
+            answerInput.value = '';
+        });
+
+        document.getElementById('play-again').addEventListener('click', () => {
+            location.reload();
+        });
+
+        socket.on('game state', (data) => {
+            updateQuestion(data.currentQuestion);
+            updateLeaderboard(data.players);
+        });
+
+        socket.on('new question', (question) => {
+            updateQuestion(question);
+        });
+
+        socket.on('answer result', (result) => {
+            if (result.correct) {
+                alert(`Correct! You earned ${result.points} points.`);
+            } else {
+                alert('Incorrect. Try again!');
+            }
+        });
+
+        socket.on('update players', (players) => {
+            updateLeaderboard(players);
+        });
+
+        function updateQuestion(question) {
+            questionText.textContent = question.text;
+            questionPoints.textContent = `Points: ${question.points}`;
+        }
+
+        function updateLeaderboard(players) {
+            leaderboardList.innerHTML = '';
+            players.sort((a, b) => b.score - a.score).forEach(player => {
+                const li = document.createElement('li');
+                li.textContent = `${player.name}: ${player.score}`;
+                leaderboardList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
