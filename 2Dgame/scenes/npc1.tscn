@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8jnnsxpe8jfn"]
+[gd_scene load_steps=22 format=3 uid="uid://c8jnnsxpe8jfn"]
 
 [ext_resource type="Script" path="res://scripts/npc1.gd" id="1_1djfg"]
 [ext_resource type="Texture2D" uid="uid://dnaq57a237rss" path="res://prefabs/NPCS/Male2.png" id="1_uuks8"]
-[ext_resource type="PackedScene" uid="uid://x07ydj73fr3u" path="res://scenes/dialouge.tscn" id="3_1i4b0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wso8j"]
 radius = 14.0
@@ -164,6 +163,7 @@ autoplay = "idle"
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Label" type="Label" parent="."]
+z_index = 10
 offset_left = -46.0
 offset_top = -51.0
 offset_right = 49.0
@@ -182,10 +182,7 @@ monitorable = false
 [node name="circle" type="CollisionShape2D" parent="interaction area"]
 shape = SubResource("CircleShape2D_7k0qt")
 
-[node name="dialouge" parent="." instance=ExtResource("3_1i4b0")]
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="interaction area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="interaction area" to="." method="_on_interaction_area_body_exited"]
 [connection signal="body_shape_entered" from="interaction area" to="." method="_on_interaction_area_body_shape_entered"]
-[connection signal="dialouge_done" from="dialouge" to="." method="_on_control_dialouge_done"]

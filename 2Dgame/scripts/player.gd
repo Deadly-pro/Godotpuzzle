@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal done
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var keylb=$keys
 var can_move=true
@@ -51,3 +52,8 @@ func _picked(item):
 	match(item):
 		"key": inventory["key"]+=1
 		"coin":inventory["coin"]+=1
+func dialouge(cl,pr):
+	await $Camera2D/CanvasLayer/player_ui.start(cl,pr)
+
+func _on_player_ui_dialouge_done():
+	emit_signal("done")

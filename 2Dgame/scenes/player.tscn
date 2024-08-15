@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://coyerkmic7oyn"]
+[gd_scene load_steps=23 format=3 uid="uid://coyerkmic7oyn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_d05kw"]
 [ext_resource type="Texture2D" uid="uid://dntdusof861ie" path="res://prefabs/Samurai/Idle.png" id="1_urjtr"]
 [ext_resource type="Texture2D" uid="uid://bn47k5rluxxqk" path="res://prefabs/Samurai/Run.png" id="2_n4lyg"]
 [ext_resource type="Texture2D" uid="uid://ds300tu6sjvfh" path="res://prefabs/GameItemsAnims-Sheet.png" id="4_bv5jp"]
+[ext_resource type="PackedScene" uid="uid://k41tt0ii814l" path="res://scenes/player_ui.tscn" id="4_f60q6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si45b"]
 size = Vector2(18.118, 29.4678)
@@ -144,6 +145,7 @@ autoplay = "idle"
 offset = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 11.2157)
 zoom = Vector2(2, 2)
 limit_left = 50
 limit_top = -750
@@ -151,6 +153,32 @@ limit_right = 1250
 limit_bottom = 900
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="player_ui" parent="Camera2D/CanvasLayer" instance=ExtResource("4_f60q6")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -376.0
+offset_right = -27.0
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.34436, 2.40553)
+size_flags_horizontal = 6
+size_flags_vertical = 10
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+offset_left = 1.0
+offset_top = 456.0
+offset_right = 41.0
+offset_bottom = 496.0
+scale = Vector2(28.8143, 4.7832)
+color = Color(0, 0, 0, 0.286275)
 
 [node name="keys" type="Label" parent="."]
 anchors_preset = 5
@@ -171,3 +199,5 @@ texture = ExtResource("4_bv5jp")
 hframes = 8
 vframes = 12
 frame = 7
+
+[connection signal="dialouge_done" from="Camera2D/CanvasLayer/player_ui" to="." method="_on_player_ui_dialouge_done"]

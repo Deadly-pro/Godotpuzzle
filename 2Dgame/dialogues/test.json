@@ -1,0 +1,20 @@
+{
+	"first_level": 
+		{
+		"npc": 
+			[
+			{"name":"magistrate","chat":"Oh your here, we've been waiting for u.... "},
+			{"name":"You","chat":"uhhh... what?!"},
+			{"name":"You","chat":"Is this one of those things? "},
+			{"name":"You","chat":"Am i being Kidnapped or something?"},
+			{"name":"magistrate","chat":"Just as when peaceful days seemed everlasting, our"},
+			{"name":"magistrate","chat":"greatest fears returned"},
+			],
+		"golem":[
+			{"name":"Golem","chat":"Hey!!!!!.. YOU!!!...."},
+			{"name":"Panicking Villagers","chat":"OH SHOOT RUN FOR YOUR LIVES!!!!!!!....."},
+			{"name":"Golem","chat":"WAIT I CAN EXPLAIN!!!!!!!..... wait "},
+			],
+	 },
+}
+

@@ -1,23 +1,47 @@
 extends Control
+
+@export_file("test.json") var d_file
+var dialouge
+var dia
+var current_dialouge_id=0
 var d_active=false
-signal prompt_done
-var current_id
-var last_id
+signal  dialouge_done
+
 func _ready():
-	$NinePatchRect/name.visible=false
-	$NinePatchRect/chat.visible=false
+	$NinePatchRect.visible=false
+	$"../ColorRect".visible=false
+
+func start(current_level,person):
+	if d_active:
+		return
+	d_active=true
+	$NinePatchRect.visible=true
+	$"../ColorRect".visible=true
+	dialouge=load_dialouge()
+	dia=dialouge[current_level][person]
+	current_dialouge_id=-1
+	next_script()
+
+func load_dialouge():
+	var file=FileAccess.open("res://dialogues/test.json",FileAccess.READ)
+	var content=JSON.parse_string(file.get_as_text())
+	return content
+
 func _input(event):
 	if !d_active:
 		return
 	if event.is_action_pressed("ui_accept"):
 		next_script()
-func ui_pormpt(text):
-	d_active=true
-	$NinePatchRect/name.text=text["name"]
-	$NinePatchRect/chat.text=text["chat"]
+func dialouge_load(text):
+	var content = text
+	return content
 func next_script():
-	emit_signal("prompt_done")
-	if current_id!=last_id:
-		await "display"
-	else: 
-	
+	current_dialouge_id+=1
+	if current_dialouge_id>=len(dia):
+		d_active=false
+		$NinePatchRect.visible=false
+		$"../ColorRect".visible=false
+		emit_signal("dialouge_done")
+		return 
+	$NinePatchRect/name.text=dia[current_dialouge_id]["name"]
+	$NinePatchRect/chat.text=dia[current_dialouge_id]["chat"]

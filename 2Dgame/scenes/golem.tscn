@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://no6w0tm2o0ug"]
+
+[ext_resource type="Script" path="res://scripts/golem.gd" id="1_bb33f"]
+[ext_resource type="Texture2D" uid="uid://b54jgi6i33ia0" path="res://prefabs/NPCS/golem_good.png" id="2_kre0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt4qv"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(0, 0, 432, 624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kcuo"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(432, 0, 432, 624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j43bq"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(864, 0, 432, 624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qwqb"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(0, 624, 432, 624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6eyl"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(432, 624, 432, 624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81lsl"]
+atlas = ExtResource("2_kre0h")
+region = Rect2(864, 624, 432, 624)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjhpq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt4qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kcuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j43bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qwqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6eyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81lsl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_417iu"]
+radius = 83.8153
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sv5cy"]
+radius = 119.0
+
+[node name="golem" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_bb33f")
+current_state = "MOVE"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bjhpq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_417iu")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+offset_left = -85.0
+offset_top = -127.0
+offset_right = 20.0
+offset_bottom = -104.0
+scale = Vector2(1.781, 1.93832)
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "[E] to interact
+"
+
+[node name="interaction area" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+input_pickable = false
+monitorable = false
+
+[node name="circle" type="CollisionShape2D" parent="interaction area"]
+shape = SubResource("CircleShape2D_sv5cy")
+
+[connection signal="body_entered" from="interaction area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction area" to="." method="_on_interaction_area_body_exited"]
