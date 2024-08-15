@@ -27,7 +27,7 @@ func _process(delta):
 func update_camera_position():
 	if player.position.y > ground_level and player.player_state != 420:
 		ground_level = player.position.y
-		global_position.y = ground_level
+		position.y = ground_level
 		original_position = global_position
 		prop.generate(tilemap.local_to_map(global_position).y + 20)
 		print(ground_level)
