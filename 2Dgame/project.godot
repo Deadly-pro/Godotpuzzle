@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="2d puzzles"
+config/name="GAME_lv1"
 run/main_scene="res://scenes/control.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

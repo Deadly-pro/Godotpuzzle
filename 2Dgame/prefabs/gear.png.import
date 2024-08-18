@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcx4860ih88kw"
-path="res://.godot/imported/Gold_20.png-12762bc533d66908fa2eb0729b078af8.ctex"
+uid="uid://kmhbadki71pu"
+path="res://.godot/imported/gear.png-6423b3e928bf6573339bf1e630b396b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://prefabs/Gold/Gold_20.png"
-dest_files=["res://.godot/imported/Gold_20.png-12762bc533d66908fa2eb0729b078af8.ctex"]
+source_file="res://prefabs/gear.png"
+dest_files=["res://.godot/imported/gear.png-6423b3e928bf6573339bf1e630b396b3.ctex"]
 
 [params]
 

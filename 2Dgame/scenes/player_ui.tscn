@@ -10,6 +10,7 @@ offset_bottom = 40.0
 script = ExtResource("1_ap6qg")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -230.0
 offset_top = 61.0
@@ -28,7 +29,6 @@ offset_right = 117.0
 offset_bottom = 56.0
 scale = Vector2(0.8, 0.8)
 text = "Name"
-fit_content = true
 scroll_following = true
 
 [node name="chat" type="RichTextLabel" parent="NinePatchRect"]

@@ -173,6 +173,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 10
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
 offset_left = 1.0
 offset_top = 456.0
 offset_right = 41.0

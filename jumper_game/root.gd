@@ -19,7 +19,7 @@ func update_label_text():
 func check_game_conditions(delta):
 	if delta > 0.05:
 		print("The game is lagging lol")
-	if $player.position.y > 300 and $player.player_state != 420 and $player.player_state != 69:
+	if $player.position.y > 400 and $player.player_state != 420 and $player.player_state != 69:
 		win()
 
 func _on_flash_timer_timeout():

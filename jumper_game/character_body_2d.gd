@@ -42,10 +42,10 @@ func handle_gravity(delta):
 func handle_movement():
 	if is_on_floor():
 		has_jumped = false
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		has_jumped = true
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("right","left")
 	if direction != 0:
 		velocity.x = direction * SPEED
 		facing_right = direction > 0
