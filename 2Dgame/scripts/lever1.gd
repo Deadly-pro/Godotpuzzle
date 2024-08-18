@@ -4,6 +4,7 @@ extends StaticBody2D
 @onready var animator=$AnimatedSprite2D
 @onready var gate=%gate
 var inrange=false
+var interactable =false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label.global_position=self.global_position
@@ -14,25 +15,32 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if inrange && Input.is_action_just_pressed("interact"):
-		print("Interact")
-		if animator.animation=="off":
-			print("on")
-			animator.animation="on"
-			gate._setstate("on")
-		elif animator.animation=="on":
-			print("off")
-			animator.animation="off"
-			gate._setstate("off")
+	if interactable:
+		if inrange && Input.is_action_just_pressed("interact"):
+			print("Interact")
+			if animator.animation=="off":
+				print("on")
+				animator.animation="on"
+				gate._setstate("on")
+			elif animator.animation=="on":
+				print("off")
+				animator.animation="off"
+				gate._setstate("off")
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("_picked"):
-		label.show()
-		inrange=true
+	if interactable:
+		if body.has_method("_picked"):
+			label.show()
+			inrange=true
 
 
 func _on_area_2d_body_exited(body):
-	if body.has_method("_picked"):
-			label.hide()
-			inrange=false
+	if interactable:
+		if body.has_method("_picked"):
+				label.hide()
+				inrange=false
+
+
+func _on_blacksmith_interactable():
+	interactable=true

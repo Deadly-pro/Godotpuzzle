@@ -42,3 +42,7 @@ text = "Chat...
 "
 fit_content = true
 scroll_following = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

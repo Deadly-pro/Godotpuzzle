@@ -1,5 +1,6 @@
 extends CharacterBody2D
 const speed = 100
+signal interactable
 var is_moving=false
 var is_chating=false
 var in_range=false
@@ -58,6 +59,7 @@ func _process(delta):
 			elif current_dial==2:
 				current_dial=3
 				await $"../player".dialouge("first_level","blacksmith2")
+				emit_signal("interactable")
 			else:
 				await $"../player".dialouge("first_level","blacksmith_idle")
 

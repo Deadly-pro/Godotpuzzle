@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CTF Quiz</h1>
+        <div id="home-screen">
+            <h2>Choose a question:</h2>
+            <div id="question-list"></div>
+        </div>
+        <div id="quiz" style="display: none;">
+            <h2 id="question-text"></h2>
+            <div id="options"></div>
+            <button id="submit">Submit</button>
+        </div>
+        <div id="leaderboard">
+            <h2>Leaderboard</h2>
+            <ol id="leaderboardList"></ol>
+        </div>
+    </div>
+    <script>
+        let currentQuestion, startTime;
+
+        async function loadQuestions() {
+            const response = await fetch('/questions');
+            const questions = await response.json();
+            const questionListHtml = questions.map(q => `
+                <button onclick="loadQuestion(${q.id})">${q.question}</button>
+            `).join('');
+            document.getElementById('question-list').innerHTML = questionListHtml;
+        }
+
+        async function loadQuestion(id) {
+            const response = await fetch(`/question/${id}`);
+            currentQuestion = await response.json();
+            startTime = Date.now();
+            
+            document.getElementById('question-text').textContent = currentQuestion.question;
+            const optionsHtml = currentQuestion.options.map((option, i) => `
+                <label>
+                    <input type="radio" name="answer" value="${i}">
+                    ${option}
+                </label>
+            `).join('');
+            document.getElementById('options').innerHTML = optionsHtml;
+            
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        async function loadLeaderboard() {
+            const response = await fetch('/leaderboard');
+            const leaderboard = await response.json();
+            const leaderboardHtml = leaderboard.map(entry => `
+                <li>${entry.username}: ${entry.score}</li>
+            `).join('');
+            document.getElementById('leaderboardList').innerHTML = leaderboardHtml;
+        }
+
+        document.getElementById('submit').addEventListener('click', async () => {
+            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (!selectedAnswer) {
+                alert('Please select an answer');
+                return;
+            }
+            
+            const answer = parseInt(selectedAnswer.value);
+            const timeSpent = (Date.now() - startTime) / 1000; // in seconds
+            
+            const response = await fetch(`/submit/${currentQuestion.id}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ answer, timeSpent })
+            });
+            const result = await response.json();
+            
+            alert(`Your answer was ${result.correct ? 'correct' : 'incorrect'}. You earned ${result.score} points.`);
+            loadLeaderboard();
+            
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('home-screen').style.display = 'block';
+        });
+
+        loadQuestions();
+        loadLeaderboard();
+    </script>
+</body>
+</html>
