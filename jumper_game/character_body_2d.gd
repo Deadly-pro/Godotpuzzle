@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 120.0
-const JUMP_VELOCITY = -200.0
+const SPEED = 100.0
+const JUMP_VELOCITY = -250.0
 
 @onready var animation = $AnimatedSprite2D
 @onready var camera = get_node("/root/scene/Camera2D")
@@ -45,14 +45,14 @@ func handle_movement():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		has_jumped = true
-	var direction = Input.get_axis("right","left")
-	if direction != 0:
+	var direction = Input.get_axis("left", "right")
+	if direction != 0 and is_on_floor():
 		velocity.x = direction * SPEED
 		facing_right = direction > 0
 		update_sword_position()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if has_jumped and velocity.y > 200:
+	if has_jumped and velocity.y > 250:
 		remove_tile_below()
 		camera.shake()
 
@@ -67,7 +67,7 @@ func update_sword_position():
 		swing_angle = -60
 
 func handle_sword_swing(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not swinging:
+	if Input.is_action_just_pressed("attack") and not swinging:
 		swinging = true
 		swing_timer = 0.0
 	

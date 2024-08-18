@@ -32,4 +32,3 @@ func generate(y = last_level):
 
 func _process(delta):
 	pass
-
