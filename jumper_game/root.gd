@@ -3,11 +3,15 @@ extends Node2D
 @onready var label = get_node("Camera2D/Lable1")
 @onready var is_shook = false
 @onready var timer = $FlashTimer
+@onready var retry_button = get_node("Camera2D/Button")
 
 func _process(delta):
 	update_label_text()
 	if delta > 0.05:
 		print("The game is lagging lol")
+
+func _ready():
+	retry_button.connect("pressed", _on_RetryButton_pressed)
 
 func update_label_text():
 	if timer.time_left > 0:
@@ -30,3 +34,6 @@ func game_set():
 	$player.position = Vector2(0, -45)
 	camera.set_camera()
 	$player.player_state = 0
+	
+func _on_RetryButton_pressed():
+	get_tree().reload_current_scene()

@@ -93,7 +93,6 @@ func check_and_remove_tiles():
 	recursive_tile_remover(tile_position.x, tile_position.y)
 
 func check_player_state():
-	print(player_state)
 	if player_state >=420:
 		if player_state == 420:
 			velocity.y = -100
