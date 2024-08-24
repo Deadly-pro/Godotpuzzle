@@ -5,6 +5,9 @@ extends StaticBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animator.animation="idle"
+func _pos(loc):
+	loc=self.global_position
+
 func _setstate(change):
 	if change!=state:
 		state=change

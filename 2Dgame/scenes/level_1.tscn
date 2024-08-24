@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://4ms35k1ps1gl"]
+[gd_scene load_steps=31 format=3 uid="uid://4ms35k1ps1gl"]
 
+[ext_resource type="Script" path="res://scenes/level_1.gd" id="1_bffs2"]
 [ext_resource type="PackedScene" uid="uid://coyerkmic7oyn" path="res://scenes/player.tscn" id="1_bkgdn"]
 [ext_resource type="PackedScene" uid="uid://fqu4hgij4mc" path="res://scenes/lever.tscn" id="2_2wo3a"]
 [ext_resource type="PackedScene" uid="uid://b1hajjra8ao42" path="res://scenes/gate.tscn" id="3_bhxf0"]
@@ -2723,16 +2724,19 @@ sources/1 = SubResource("TileSetAtlasSource_7eb1o")
 radius = 120.785
 
 [node name="level1" type="Node2D"]
+script = ExtResource("1_bffs2")
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("1_bkgdn")]
 position = Vector2(247, 675)
+scale = Vector2(0.68, 0.562444)
 
 [node name="gate" parent="." instance=ExtResource("3_bhxf0")]
 unique_name_in_owner = true
 z_index = 4
 position = Vector2(910, -96)
 scale = Vector2(7.27262, 6.35904)
+state = "on"
 
 [node name="key" parent="." instance=ExtResource("4_vfbgu")]
 z_index = 5
@@ -2804,7 +2808,7 @@ position = Vector2(964.335, 505.734)
 scale = Vector2(2.32797, 2.43567)
 
 [node name="village_head" parent="." instance=ExtResource("13_1tdis")]
-position = Vector2(505, 687)
+position = Vector2(916, 368)
 current_state = "MOVE"
 
 [node name="golem" parent="." instance=ExtResource("14_l77w4")]
@@ -2855,6 +2859,9 @@ horizontal_alignment = 1
 [connection signal="done" from="player" to="village_head" method="_on_player_done"]
 [connection signal="done" from="player" to="golem" method="_on_player_done"]
 [connection signal="done" from="player" to="blacksmith" method="_on_player_done"]
+[connection signal="ready" from="player" to="." method="_on_player_ready"]
+[connection signal="ready" from="gate" to="village_head" method="_on_gate_ready"]
+[connection signal="interactable" from="blacksmith" to="village_head" method="_on_blacksmith_interactable"]
 [connection signal="interactable" from="blacksmith" to="lever" method="_on_blacksmith_interactable"]
 [connection signal="body_entered" from="lever/Area2D" to="lever" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="lever/Area2D" to="lever" method="_on_area_2d_body_exited"]

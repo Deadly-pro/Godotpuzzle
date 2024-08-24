@@ -1,15 +1,107 @@
-/* Add this to your existing CSS */
-
-#optionsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0D2040;
 }
 
-#optionsContainer button {
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, button {
+    margin: 10px 0;
     padding: 10px;
     font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.quiz-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.leaderboard {
+    width: 250px;
+    background-color:#ef7e19;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position:relative;
+    
+}
+
+.quiz-content {
+    flex-grow: 1;
+    margin-left: 20px;
+    background-color: #0D2040;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#leaderboardList {
+    list-style-type: none;
+    background-color: #ef7e19;
+    padding: 0;
+}
+
+#leaderboardList li {
+    margin-bottom: 5px;
+}
+
+.question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 220px); /* Adjust the height as needed */
+}
+
+.question-box {
+    background-color:#ef7e19;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.options-container button {
+    padding: 8px 12px;
+    font-size: 14px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -17,27 +109,54 @@
     transition: background-color 0.3s;
 }
 
-#optionsContainer button:hover {
+.options-container button:hover {
     background-color: #e0e0e0;
 }
 
-#optionsContainer button.selected {
+.options-container button.selected {
     background-color: #007bff;
-    color: white;
+    color: #fff;
 }
 
-#submitAnswer {
+.submit-button {
     display: block;
     width: 100%;
     padding: 10px;
     font-size: 16px;
     background-color: #28a745;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
-#submitAnswer:hover {
+.submit-button:hover {
     background-color: #218838;
+}
+
+.score-container {
+    background-color:#ef7e19;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+/* ... (rest of the CSS content remains the same) */
+
+.header {
+    background-color: #0D2040;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 40px;
+    margin-left: 20px;
+}
+
+.logo img {
+    max-height: 200px;
 }

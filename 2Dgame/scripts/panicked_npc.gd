@@ -3,6 +3,7 @@ const speed = 100
 var is_moving=true
 var is_chating=false
 var in_range=false
+@export var panic=true
 var states=[
 	"IDLE",
 	"NEW_DIR",

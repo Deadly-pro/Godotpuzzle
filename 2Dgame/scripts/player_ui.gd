@@ -8,14 +8,17 @@ var d_active=false
 signal  dialouge_done
 
 func _ready():
-	$NinePatchRect.visible=false
+	$NinePatchRect/instuction.text="Explore the Area"
+	$NinePatchRect/name.visible=false
+	$NinePatchRect/chat.visible=false
 	$"../ColorRect".visible=false
 
 func start(current_level,person):
 	if d_active:
 		return
 	d_active=true
-	$NinePatchRect.visible=true
+	$NinePatchRect/name.visible=true
+	$NinePatchRect/chat.visible=true
 	$"../ColorRect".visible=true
 	dialouge=load_dialouge()
 	dia=dialouge[current_level][person]
@@ -32,7 +35,10 @@ func _input(event):
 		return
 	if event.is_action_pressed("ui_accept"):
 		next_script()
-		
+func instruction(instr):
+	$NinePatchRect/instuction.visible=true
+	$NinePatchRect/instuction.text=instr
+	
 func dialouge_load(text):
 	var content = text
 	return content
@@ -40,7 +46,8 @@ func next_script():
 	current_dialouge_id+=1
 	if current_dialouge_id>=len(dia):
 		d_active=false
-		$NinePatchRect.visible=false
+		$NinePatchRect/name.visible=false
+		$NinePatchRect/chat.visible=false
 		$"../ColorRect".visible=false
 		emit_signal("dialouge_done")
 		return 

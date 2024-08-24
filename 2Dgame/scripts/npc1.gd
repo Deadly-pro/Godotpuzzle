@@ -3,6 +3,7 @@ const speed = 100
 var is_moving=true
 var is_chating=false
 var in_range=false
+var interact=0
 var states=[
 	"IDLE",
 	"NEW_DIR",
@@ -46,10 +47,18 @@ func _process(delta):
 		if Input.is_action_just_pressed("interact") && in_range:
 			print("chatting")
 			current_state="IDLE"
-			await $"../player".dialouge("first_level","npc")
 			is_chating=true
 			is_moving=false
-
+			if interact==0:
+				await $"../player".dialouge("first_level","npc")
+				is_chating=false
+				is_moving=true
+				$"../player".instruct("Find the Locked Gate and help the trapped Villagers")
+			elif interact>=0:
+				await $"../player".dialouge("first_level","npc_1")
+				is_chating=false
+				is_moving=true
+				
  
 func chose(array):
 	array.shuffle()
@@ -83,4 +92,7 @@ func _on_player_done():
 func _on_timer_timeout():
 	$Timer.wait_time=chose([0.5,0.25,0.15])
 	current_state=chose(["IDLE","MOVE","NEW_DIR"])
-	
+
+
+func _on_blacksmith_interactable():
+	interact+=1

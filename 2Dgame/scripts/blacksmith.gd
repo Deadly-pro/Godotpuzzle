@@ -51,16 +51,15 @@ func _process(delta):
 			is_chating=true
 			is_moving=false
 			if current_dial==0:
-				current_dial=1
 				await $"../player".dialouge("first_level","blacksmith1")
+				current_dial=1
 			elif current_dial==1:
-				current_dial=2
 				await $"../player".dialouge("first_level","blacksmith_waiting")
 			elif current_dial==2:
-				current_dial=3
 				await $"../player".dialouge("first_level","blacksmith2")
+				current_dial=3
 				emit_signal("interactable")
-			else:
+			elif current_dial==3:
 				await $"../player".dialouge("first_level","blacksmith_idle")
 
  
@@ -79,10 +78,14 @@ func move(delta):
 				current_state="NEW_DIR"
 				prev_pos=Vector2(0,0) 
 		move_and_slide()
-
+func check(player):
+	if player.inventory["key"]>=3 && player.inventory["gear"]>=5:
+		current_dial=2
+	
 func _on_interaction_area_body_entered(body):
 	if body.has_method("_picked"):
 		in_range=true
+		check(body)
 
 func _on_interaction_area_body_exited(body):
 	if body.has_method("_picked"):

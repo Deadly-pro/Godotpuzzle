@@ -47,24 +47,25 @@ app.post('/api/submit-answer', async (req, res) => {
     const question = questions.find(q => q.id === questionId);
     const user = users.find(u => u.email === email);
     
-    if (question && user && !user.answeredQuestions.includes(questionId)) {
-        question.attempts++;
-        const decayFactor = 1 - (question.attempts * 0.1);
-        const pointsEarned = Math.round(question.points * decayFactor);
-        
-        if (answer === question.correctAnswer) {
-            user.score += pointsEarned;
-            user.answeredQuestions.push(questionId);
-            await writeJsonFile('users.json', users);
-            res.json({ correct: true, pointsEarned, newScore: user.score });
-        } else {
-            res.json({ correct: false, pointsEarned: 0, newScore: user.score });
-        }
-        
-        await writeJsonFile('questions.json', questions);
-    } else {
-        res.status(400).json({ error: 'Invalid question, user, or already answered' });
+    // Check if the user has already answered the question
+    if (user.answeredQuestions.includes(questionId)) {
+        return res.status(400).json({ error: 'You have already answered this question.' });
     }
+    
+    question.attempts++;
+    const decayFactor = 1 - (question.attempts * 0.1);
+    const pointsEarned = Math.round(question.points * decayFactor);
+    
+    if (answer === question.correctAnswer) {
+        user.score += pointsEarned;
+        user.answeredQuestions.push(questionId);
+        await writeJsonFile('users.json', users);
+        res.json({ correct: true, pointsEarned, newScore: user.score });
+    } else {
+        res.json({ correct: false, pointsEarned: 0, newScore: user.score });
+    }
+    
+    await writeJsonFile('questions.json', questions);
 });
 
 app.get('/api/leaderboard', async (req, res) => {
@@ -77,4 +78,36 @@ app.get('/api/leaderboard', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
+});
+
+// ... (rest of the code remains the same)
+
+app.post('/api/submit-answer', async (req, res) => {
+    const { email, questionId, answer } = req.body;
+    
+    let questions = await readJsonFile('questions.json');
+    let users = await readJsonFile('users.json');
+    
+    const question = questions.find(q => q.id === questionId);
+    const user = users.find(u => u.email === email);
+    
+    // Check if the user has already answered the question
+    if (user.answeredQuestions.includes(questionId)) {
+        return res.status(400).json({ error: 'You have already answered this question.' });
+    }
+    
+    question.attempts++;
+    const decayFactor = 1 - (question.attempts * 0.1);
+    const pointsEarned = Math.round(question.points * decayFactor);
+    
+    if (answer === question.correctAnswer) {
+        user.score += pointsEarned;
+        user.answeredQuestions.push(questionId);
+        await writeJsonFile('users.json', users);
+        res.json({ correct: true, pointsEarned, newScore: user.score });
+    } else {
+        res.json({ correct: false, pointsEarned: 0, newScore: user.score });
+    }
+    
+    await writeJsonFile('questions.json', questions);
 });

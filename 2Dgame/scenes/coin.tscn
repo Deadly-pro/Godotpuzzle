@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgl1nu8rarqoi"]
+[gd_scene load_steps=5 format=3 uid="uid://bgl1nu8rarqoi"]
 
 [ext_resource type="Texture2D" uid="uid://kmhbadki71pu" path="res://prefabs/gear.png" id="1_7jmcj"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_yt58p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyfdx"]
 
@@ -17,6 +18,7 @@ animations = [{
 
 [node name="gear" type="Area2D"]
 scale = Vector2(1.01667, 1.08333)
+script = ExtResource("1_yt58p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xyfdx")
@@ -27,3 +29,5 @@ sprite_frames = SubResource("SpriteFrames_bhhwg")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.0305256
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

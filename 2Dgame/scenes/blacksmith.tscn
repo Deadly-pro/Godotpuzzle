@@ -157,9 +157,9 @@ shape = SubResource("CapsuleShape2D_wso8j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7jxfm")
-animation = &"idle"
+animation = &"walk_fr"
 autoplay = "idle"
-frame_progress = 0.523847
+frame_progress = 0.646737
 
 [node name="Label" type="Label" parent="."]
 z_index = 10

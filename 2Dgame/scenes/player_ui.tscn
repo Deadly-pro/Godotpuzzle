@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_ap6qg"]
 
 [node name="player_ui" type="Control"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -10,7 +11,6 @@ offset_bottom = 40.0
 script = ExtResource("1_ap6qg")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = -230.0
 offset_top = 61.0
@@ -25,17 +25,29 @@ patch_margin_bottom = 20
 layout_mode = 0
 offset_left = 21.0
 offset_top = 16.0
-offset_right = 117.0
+offset_right = 421.0
 offset_bottom = 56.0
 scale = Vector2(0.8, 0.8)
 text = "Name"
+scroll_following = true
+
+[node name="instuction" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = -170.0
+offset_right = 477.0
+offset_bottom = -130.0
+scale = Vector2(0.8, 0.8)
+text = "instruction"
+fit_content = true
+scroll_active = false
 scroll_following = true
 
 [node name="chat" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 36.0
-offset_right = 271.0
+offset_right = 621.0
 offset_bottom = 68.0
 scale = Vector2(0.6, 0.6)
 text = "Chat...

@@ -22,6 +22,12 @@
 			{"name":"You","chat":"Great seems like a quest starts here, Uh!!! FINE Lead the way and keep this quick I want to slack off after this"},
 			{"name":"magistrate","chat":"Here Sire, they are by the gate whose lever is broken we must haste"},			
 			],
+		"npc_1": 
+			[
+			{"name":"magistrate","chat":"Thank you for your great service Sir"},
+			{"name":"You","chat":"uhhh... okay i did LIETERALLY NOTHING THOUGH?"},
+			],
+		
 		"blacksmith1":[
 			{"name":"blacksmith","chat":"This won't seem like an easy fix. WELP nothing we can let's go home and sleep "},
 			{"name":"You","chat":"Hey!! Don't go try to escape reality that quick at least give it a try"},
