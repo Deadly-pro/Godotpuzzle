@@ -1,7 +1,7 @@
 extends CharacterBody2D
 signal done
 var can_move=true
-var inventory={"key":0,"gear":0}
+var inventory={"key":10,"gear":10}
 var invsprdat={"heart":0,"power":1,"key":7}
 const max_speed = 300.0
 const friction = 1000.0

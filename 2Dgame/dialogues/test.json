@@ -60,13 +60,21 @@
 			{"name":"Panicking Villagers","chat":"OH SHOOT RUN FOR YOUR LIVES!!!!!!!....."},
 			{"name":"Golem","chat":"WAIT I CAN EXPLAIN!!!!!!!..... wait "},
 			],
-		"panicked_npc":[
-			{"name":"Panicking Villagers","chat":"Hey!!!!!.. help us"},
-			{"name":"Panicking Villagers","chat":"We've been waiting for you please help us quick. Slay that golem"},
-			{"name":"Panicking Golem","chat":"Woah there... HEY!!! WAIT DON'T I CAN EXPLAIN MYSELF "},
-			{"name":"You","chat":"What do you want me to? Isn't this YOUR problem? Stop pushing things onto people."},
-			{"name":"Panicking Villagers","chat":"GOD HAS ABNDONED US!!!!!! "},
+		"golem_1":[
+			{"name":"Panicking Villagers","chat":"Hey!!!!!.. help us. The Gaurdian Golem is going to eat us"},
+			{"name":"Golem","chat":"Hey, I don't eat people"},
+			{"name":"Panicking Villagers","chat":"He's want to make us into his slaves PLEASE HURRY!!! KILL HIM!!!"},
+			{"name":"Panicking Golem","chat":"Woah there... HEY!!! WAIT DON'T I CAN EXPLAIN MYSELF!!!! "},
+			{"name":"You","chat":"Oh.... (you realise that the golem is being misunderstood and is panicking). Well that can certainly be arranged"},
+			],
+		"golem_2":[
+			{"name":"Golem","chat":"NOOO PLEASE SPARE ME I DID NOTHING"},
+			{"name":"You","chat":"Hey you Golem what's your deal with these people anyway?"},
+			{"name":"Golem","chat":"I am the gaurdian of the Artifact. The one singular object that has the highest authority in the world"},
+			{"name":"Panicking Villagers","chat":"You were the one who was meant to gaurd the Artifact and now you've abandoned your duties!!!!!"},
+			{"name":"Golem","chat":""},
 			{"name":"You","chat":"Hey you Golem wat's your deal with these people anyway?"},
+		
 		],
 	 },
 }

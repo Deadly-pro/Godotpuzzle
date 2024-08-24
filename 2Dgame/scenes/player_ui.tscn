@@ -33,15 +33,23 @@ scroll_following = true
 
 [node name="instuction" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 77.0
-offset_top = -170.0
-offset_right = 477.0
-offset_bottom = -130.0
+offset_left = 78.0
+offset_top = -173.0
+offset_right = 478.0
+offset_bottom = -133.0
 scale = Vector2(0.8, 0.8)
-text = "instruction"
+text = "Explore The Area ????!!!!"
 fit_content = true
 scroll_active = false
 scroll_following = true
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/instuction"]
+layout_mode = 0
+offset_top = -8.75
+offset_right = 40.0
+offset_bottom = 31.25
+scale = Vector2(10.859, 1.12146)
+color = Color(0, 0, 0, 0.286275)
 
 [node name="chat" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0

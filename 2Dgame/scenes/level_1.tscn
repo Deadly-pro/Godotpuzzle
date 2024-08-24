@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://4ms35k1ps1gl"]
+[gd_scene load_steps=33 format=3 uid="uid://4ms35k1ps1gl"]
 
 [ext_resource type="Script" path="res://scenes/level_1.gd" id="1_bffs2"]
 [ext_resource type="PackedScene" uid="uid://coyerkmic7oyn" path="res://scenes/player.tscn" id="1_bkgdn"]
@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://7a1hdqgmpfcv" path="res://prefabs/Texture/TX Struct.png" id="12_irwgj"]
 [ext_resource type="PackedScene" uid="uid://c8jnnsxpe8jfn" path="res://scenes/npc1.tscn" id="13_1tdis"]
 [ext_resource type="PackedScene" uid="uid://h02o4ubkexdx" path="res://scenes/fire.tscn" id="14_5tcrr"]
+[ext_resource type="PackedScene" uid="uid://jya1enf68xgx" path="res://scenes/panicked_npc_2.tscn" id="14_8f1rs"]
 [ext_resource type="PackedScene" uid="uid://no6w0tm2o0ug" path="res://scenes/golem.tscn" id="14_l77w4"]
+[ext_resource type="PackedScene" uid="uid://b8ykrt17txaej" path="res://scenes/panicked_npc.tscn" id="14_sr8ow"]
 [ext_resource type="PackedScene" uid="uid://bgl1nu8rarqoi" path="res://scenes/coin.tscn" id="16_l2ko7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uaatf"]
@@ -2736,7 +2738,6 @@ unique_name_in_owner = true
 z_index = 4
 position = Vector2(910, -96)
 scale = Vector2(7.27262, 6.35904)
-state = "on"
 
 [node name="key" parent="." instance=ExtResource("4_vfbgu")]
 z_index = 5
@@ -2807,13 +2808,29 @@ z_index = 100
 position = Vector2(964.335, 505.734)
 scale = Vector2(2.32797, 2.43567)
 
+[node name="panicked_npc2" parent="TileMap" instance=ExtResource("14_8f1rs")]
+position = Vector2(520.818, -435.608)
+scale = Vector2(0.851427, 0.778916)
+
+[node name="panicked_npc3" parent="TileMap" instance=ExtResource("14_8f1rs")]
+position = Vector2(401.967, -297.005)
+scale = Vector2(0.827484, 0.768996)
+
+[node name="panicked_npc" parent="TileMap" instance=ExtResource("14_sr8ow")]
+position = Vector2(399.069, -438.083)
+scale = Vector2(1, 0.801997)
+
+[node name="panicked_npc4" parent="TileMap" instance=ExtResource("14_sr8ow")]
+position = Vector2(449.314, -400.132)
+scale = Vector2(1, 0.834997)
+
 [node name="village_head" parent="." instance=ExtResource("13_1tdis")]
 position = Vector2(916, 368)
 current_state = "MOVE"
 
 [node name="golem" parent="." instance=ExtResource("14_l77w4")]
-position = Vector2(724, -379)
-scale = Vector2(0.549115, 0.541481)
+position = Vector2(618, -406)
+scale = Vector2(0.725966, 0.726854)
 
 [node name="gear" parent="." instance=ExtResource("16_l2ko7")]
 position = Vector2(188, -172)
