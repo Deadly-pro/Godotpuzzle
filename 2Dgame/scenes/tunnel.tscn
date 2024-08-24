@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://f38aj0i3784y"]
-
-[ext_resource type="Script" path="res://scripts/stairs.gd" id="1_dq6yo"]
-
-[node name="stairs" type="Area2D"]
-collision_layer = 2
-script = ExtResource("1_dq6yo")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -53,7 +53,7 @@ func _process(delta):
  
 func chose(array):
 	array.shuffle()
-	current_state="MOVE"
+	current_state="IDLE"
 	return array.front()
 
 func move(delta):
@@ -75,11 +75,12 @@ func _on_interaction_area_body_exited(body):
 	if body.has_method("_picked"):
 		in_range=false
 
-func _on_timer_timeout():
-	$Timer.wait_time=chose([0.5,0.25,0.15])
-	current_state=chose(["IDLE","MOVE","NEW_DIR"])
-	
 func _on_player_done():
 	is_chating=false
 	is_moving=true
 	_on_timer_timeout()
+
+func _on_timer_timeout():
+	$Timer.wait_time=chose([0.5,0.25,0.15])
+	current_state=chose(["IDLE","MOVE","NEW_DIR"])
+	

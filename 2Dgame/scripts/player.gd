@@ -1,52 +1,33 @@
 extends CharacterBody2D
 signal done
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var keylb=$keys
 var can_move=true
 var inventory={"key":0,"coin":0}
 var invsprdat={"heart":0,"power":1,"key":7}
-const SPEED = 300.0
-const JUMP_VELOCITY = -300.0
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+const max_speed = 300.0
+const friction = 1000.0
+const accel =1500
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func _ready():
-	pass
-
+var input=Vector2.ZERO
 func _physics_process(delta):
-	var directiony = Input.get_axis("forward", "downward")
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	player_movement(delta)
 
-	if is_on_floor():
-		if direction>0:
-			animated_sprite.flip_h=false
-		elif direction<0:
-			animated_sprite.flip_h=true		
-			
-	if is_on_floor():
-		if velocity.x>0:
-			animated_sprite.play("run")
-		elif velocity.x<0:
-			animated_sprite.play("run")
-		elif velocity.x==0:
-			animated_sprite.play("idle")
+func get_input():
+	input.x=int(Input.is_action_pressed("right"))-int(Input.is_action_pressed("left"))
+	input.y=int(Input.is_action_pressed("downward"))-int(Input.is_action_pressed("forward"))
+	return input.normalized()
+
+func player_movement(delta):
+	input=get_input()
+	if input==Vector2.ZERO:
+		if velocity.length()>(friction*delta):
+			velocity-=velocity.normalized()*(friction*delta)
+		else :
+			velocity=Vector2.ZERO
+	else:
+		velocity+=(input*accel*delta)
+		velocity=velocity.limit_length(max_speed)
 	
-	if direction && can_move:
-		velocity.x = direction * SPEED 
-	elif can_move:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if directiony && can_move:
-		velocity.y = directiony * SPEED 
-	elif can_move:
-		velocity.y = move_toward(velocity.y, 0, SPEED) 
 	move_and_slide()
-	keylb.text=str(inventory["key"])
 
 func _picked(item):
 	match(item):
@@ -54,6 +35,5 @@ func _picked(item):
 		"coin":inventory["coin"]+=1
 func dialouge(cl,pr):
 	await $Camera2D/CanvasLayer/player_ui.start(cl,pr)
-
 func _on_player_ui_dialouge_done():
 	emit_signal("done")

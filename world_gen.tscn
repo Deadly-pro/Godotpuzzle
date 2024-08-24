@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgpcbgbujl5ml"]
+
+[ext_resource type="Script" path="res://world_gen.gd" id="1_mvkv5"]
+[ext_resource type="TileSet" uid="uid://c5nrqnm35le7k" path="res://Assets/world.tres" id="2_yjxxp"]
+
+[sub_resource type="Gradient" id="Gradient_xjwhe"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.1675, 0.3325, 0.5, 0.665, 0.835)
+colors = PackedColorArray(0.673988, 0.560816, 0.233038, 1, 0.158475, 0.65512, 0.815709, 1, 0.525229, 0.197524, 0.146512, 1, 0.241179, 0.311519, 0.350714, 1, 0.428948, 0.249751, 0.105279, 1, 0.487686, 0.000269484, 0.520035, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ko0ev"]
+frequency = 0.2512
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrxjg"]
+color_ramp = SubResource("Gradient_xjwhe")
+noise = SubResource("FastNoiseLite_ko0ev")
+
+[node name="prop_gen" type="Node2D"]
+script = ExtResource("1_mvkv5")
+noise_height_texture = SubResource("NoiseTexture2D_yrxjg")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_yjxxp")
+format = 2

@@ -1,15 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgl1nu8rarqoi"]
+[gd_scene load_steps=4 format=3 uid="uid://bgl1nu8rarqoi"]
 
-[ext_resource type="Texture2D" uid="uid://b87l15k6l0d26" path="res://prefabs/Bronze/Bronze_21.png" id="1_yfeej"]
-[ext_resource type="Texture2D" uid="uid://dp1rldcar1epn" path="res://prefabs/Bronze/Bronze_22.png" id="2_i1p2r"]
-[ext_resource type="Texture2D" uid="uid://cdiebk7oas7lm" path="res://prefabs/Bronze/Bronze_23.png" id="3_ulf8f"]
-[ext_resource type="Texture2D" uid="uid://dl5nttcjovl44" path="res://prefabs/Bronze/Bronze_24.png" id="4_6rvag"]
-[ext_resource type="Texture2D" uid="uid://dyli7webb2w25" path="res://prefabs/Bronze/Bronze_25.png" id="5_27xs8"]
-[ext_resource type="Texture2D" uid="uid://c0uaa5y0dsjvk" path="res://prefabs/Bronze/Bronze_26.png" id="6_s8ups"]
-[ext_resource type="Texture2D" uid="uid://dhdim0jlmqwex" path="res://prefabs/Bronze/Bronze_27.png" id="7_lq3rr"]
-[ext_resource type="Texture2D" uid="uid://bmqis7jsjqqq5" path="res://prefabs/Bronze/Bronze_28.png" id="8_pwwgm"]
-[ext_resource type="Texture2D" uid="uid://p3rt4juumec" path="res://prefabs/Bronze/Bronze_29.png" id="9_h8evv"]
-[ext_resource type="Texture2D" uid="uid://ddxbk6pyxmtd6" path="res://prefabs/Bronze/Bronze_30.png" id="10_mejxh"]
+[ext_resource type="Texture2D" uid="uid://kmhbadki71pu" path="res://prefabs/gear.png" id="1_7jmcj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyfdx"]
 
@@ -17,41 +8,15 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yfeej")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_i1p2r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ulf8f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_6rvag")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_27xs8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_s8ups")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_lq3rr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_pwwgm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_h8evv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_mejxh")
+"texture": ExtResource("1_7jmcj")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 10.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="gear" type="Area2D"]
+scale = Vector2(1.01667, 1.08333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xyfdx")
@@ -61,5 +26,4 @@ scale = Vector2(0.0359739, 0.0331339)
 sprite_frames = SubResource("SpriteFrames_bhhwg")
 animation = &"idle"
 autoplay = "idle"
-frame = 7
 frame_progress = 0.0305256

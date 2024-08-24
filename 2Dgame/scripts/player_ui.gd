@@ -32,6 +32,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("ui_accept"):
 		next_script()
+		
 func dialouge_load(text):
 	var content = text
 	return content

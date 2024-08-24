@@ -1,20 +1,67 @@
 {
 	"first_level": 
 		{
+		"You":[
+			{"name":"You","chat":"What the f............?????!!!!!!!!!"},
+			{"name":"You","chat":"Was this not a Quiz ???!! Where am i ???!!"},
+			{"name":"You","chat":"Why is this happening ??? Is this something only on my SCREEN!!? "},
+			{"name":"You","chat":"Well I was just about getting bored anyway might as well kill sometime here "},
+			{"name":"You","chat":"This whole thing was boring anyway "},
+			{"name":"You","chat":"Who is that guy there ? Lets go talk to him "},
+			],
 		"npc": 
 			[
 			{"name":"magistrate","chat":"Oh your here, we've been waiting for u.... "},
 			{"name":"You","chat":"uhhh... what?!"},
 			{"name":"You","chat":"Is this one of those things? "},
 			{"name":"You","chat":"Am i being Kidnapped or something?"},
-			{"name":"magistrate","chat":"Just as when peaceful days seemed everlasting, our"},
-			{"name":"magistrate","chat":"greatest fears returned"},
+			{"name":"magistrate","chat":"Just as when peaceful days seemed everlasting, our greatest fears returned"},
+			{"name":"magistrate","chat":"please haste my friend and come to me to fix the lever quick its the only way to save them now"},
+			{"name":"You","chat":"Hey!! Don't start monologuing out of nowhere this isn't a game."},
+			{"name":"magistrate","chat":"Dear esteemed Hero, Sir i ask thee help for my village pls save them from the golem"},
+			{"name":"You","chat":"Great seems like a quest starts here, Uh!!! FINE Lead the way and keep this quick I want to slack off after this"},
+			{"name":"magistrate","chat":"Here Sire, they are by the gate whose lever is broken we must haste"},			
 			],
+		"blacksmith1":[
+			{"name":"blacksmith","chat":"This won't seem like an easy fix. WELP nothing we can let's go home and sleep "},
+			{"name":"You","chat":"Hey!! Don't go try to escape reality that quick at least give it a try"},
+			{"name":"blacksmith","chat":"YOU ARE IN NO POSITION TO SAY THAT!!!!"},
+			{"name":"You","chat":"...........????????????....."},
+			{"name":"blacksmith","chat":"Seems like now isn't the time to break the fourth wall. "},
+			{"name":"blacksmith","chat":"find me 5 gears and 3 keys then we'll talk "},
+			{"name":"You","chat":"That's a weird grocery list but sure ill help."},
+			],
+		"blacksmith_waiting":[
+			{"name":"blacksmith","chat":"Did you get the 3 Keys and 5 Gears?"},
+			],	
+		"blacksmith_idle":[
+			{"name":"blacksmith","chat":"What do you want?"},
+			{"name":"You","chat":"uhh.... okay talk about being unfriendly, gezzz"},
+			{"name":"blacksmith","chat":"Shove it you escapist kid from another world "},
+			{"name":"You","chat":"So you knew ....?"},
+			{"name":"blacksmith","chat":"I know everything, now shove it .."},],	
+		"blacksmith2":[
+			{"name":"blacksmith","chat":"That should do it."},
+			{"name":"blacksmith","chat":"Let's get to work now "},
+			{"name":"You","chat":"Finally done with the work"},
+			{"name":"blacksmith","chat":"Hey!! kiddo the REAL Work starts from here "},
+			{"name":"You","chat":"Waaaaaahhhh!!!!!!!!!!!!! There's more!!!!!!"},
+			{"name":"You","chat":"Well the faster the better is guess"},
+			{"name":"blacksmith","chat":"There the level should work now"},
+			],	
 		"golem":[
 			{"name":"Golem","chat":"Hey!!!!!.. YOU!!!...."},
 			{"name":"Panicking Villagers","chat":"OH SHOOT RUN FOR YOUR LIVES!!!!!!!....."},
 			{"name":"Golem","chat":"WAIT I CAN EXPLAIN!!!!!!!..... wait "},
 			],
+		"panicked_npc":[
+			{"name":"Panicking Villagers","chat":"Hey!!!!!.. help us"},
+			{"name":"Panicking Villagers","chat":"We've been waiting for you please help us quick. Slay that golem"},
+			{"name":"Panicking Golem","chat":"Woah there... HEY!!! WAIT DON'T I CAN EXPLAIN MYSELF "},
+			{"name":"You","chat":"What do you want me to? Isn't this YOUR problem? Stop pushing things onto people."},
+			{"name":"Panicking Villagers","chat":"GOD HAS ABNDONED US!!!!!! "},
+			{"name":"You","chat":"Hey you Golem wat's your deal with these people anyway?"},
+		],
 	 },
 }
 

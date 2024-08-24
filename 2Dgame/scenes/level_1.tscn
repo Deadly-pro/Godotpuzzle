@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://4ms35k1ps1gl"]
+[gd_scene load_steps=30 format=3 uid="uid://4ms35k1ps1gl"]
 
 [ext_resource type="PackedScene" uid="uid://coyerkmic7oyn" path="res://scenes/player.tscn" id="1_bkgdn"]
 [ext_resource type="PackedScene" uid="uid://fqu4hgij4mc" path="res://scenes/lever.tscn" id="2_2wo3a"]
 [ext_resource type="PackedScene" uid="uid://b1hajjra8ao42" path="res://scenes/gate.tscn" id="3_bhxf0"]
 [ext_resource type="PackedScene" uid="uid://c5aadrv3kmc61" path="res://scenes/key.tscn" id="4_vfbgu"]
 [ext_resource type="Texture2D" uid="uid://dauj8v37ww2c7" path="res://prefabs/Texture/TX Tileset Grass.png" id="5_1ue0v"]
+[ext_resource type="PackedScene" uid="uid://bxe4inb7d73rm" path="res://scenes/blacksmith.tscn" id="5_27ul0"]
 [ext_resource type="Texture2D" uid="uid://bp8kjj3msln7c" path="res://prefabs/Texture/TX Shadow.png" id="6_65yme"]
 [ext_resource type="Texture2D" uid="uid://d21ajsyp0kyj" path="res://prefabs/Texture/TX Tileset Wall.png" id="7_01bi0"]
 [ext_resource type="Texture2D" uid="uid://cdb6vw7evifrr" path="res://prefabs/Texture/TX Plant.png" id="8_bp0bp"]
@@ -15,9 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jnnsxpe8jfn" path="res://scenes/npc1.tscn" id="13_1tdis"]
 [ext_resource type="PackedScene" uid="uid://h02o4ubkexdx" path="res://scenes/fire.tscn" id="14_5tcrr"]
 [ext_resource type="PackedScene" uid="uid://no6w0tm2o0ug" path="res://scenes/golem.tscn" id="14_l77w4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h5ojt"]
-radius = 120.785
+[ext_resource type="PackedScene" uid="uid://bgl1nu8rarqoi" path="res://scenes/coin.tscn" id="16_l2ko7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uaatf"]
 texture = ExtResource("5_1ue0v")
@@ -2720,32 +2719,14 @@ sources/9 = SubResource("TileSetAtlasSource_120cg")
 sources/4 = SubResource("TileSetAtlasSource_2rsrc")
 sources/1 = SubResource("TileSetAtlasSource_7eb1o")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5ojt"]
+radius = 120.785
+
 [node name="level1" type="Node2D"]
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("1_bkgdn")]
 position = Vector2(247, 675)
-
-[node name="lever" parent="." instance=ExtResource("2_2wo3a")]
-z_index = 5
-position = Vector2(504, 221)
-
-[node name="Area2D" type="Area2D" parent="lever"]
-position = Vector2(0, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lever/Area2D"]
-shape = SubResource("CircleShape2D_h5ojt")
-
-[node name="Label" type="Label" parent="lever"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -52.5
-offset_right = 52.5
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "[E] to interact"
-horizontal_alignment = 1
 
 [node name="gate" parent="." instance=ExtResource("3_bhxf0")]
 unique_name_in_owner = true
@@ -2755,7 +2736,12 @@ scale = Vector2(7.27262, 6.35904)
 
 [node name="key" parent="." instance=ExtResource("4_vfbgu")]
 z_index = 5
-position = Vector2(819, 637)
+position = Vector2(1016, 256)
+scale = Vector2(1.31842, 1.09623)
+
+[node name="key3" parent="." instance=ExtResource("4_vfbgu")]
+z_index = 5
+position = Vector2(354, 40)
 scale = Vector2(1.31842, 1.09623)
 
 [node name="key2" parent="." instance=ExtResource("4_vfbgu")]
@@ -2818,14 +2804,57 @@ position = Vector2(964.335, 505.734)
 scale = Vector2(2.32797, 2.43567)
 
 [node name="village_head" parent="." instance=ExtResource("13_1tdis")]
-position = Vector2(644, 174)
+position = Vector2(505, 687)
 current_state = "MOVE"
 
 [node name="golem" parent="." instance=ExtResource("14_l77w4")]
-position = Vector2(878, 196)
+position = Vector2(724, -379)
 scale = Vector2(0.549115, 0.541481)
 
-[connection signal="done" from="player" to="golem" method="_on_player_done"]
+[node name="gear" parent="." instance=ExtResource("16_l2ko7")]
+position = Vector2(188, -172)
+
+[node name="gear2" parent="." instance=ExtResource("16_l2ko7")]
+position = Vector2(401, -286)
+
+[node name="gear3" parent="." instance=ExtResource("16_l2ko7")]
+position = Vector2(1009, -183)
+
+[node name="gear4" parent="." instance=ExtResource("16_l2ko7")]
+position = Vector2(833, 443)
+
+[node name="gear5" parent="." instance=ExtResource("16_l2ko7")]
+position = Vector2(1089, 588)
+
+[node name="blacksmith" parent="." instance=ExtResource("5_27ul0")]
+position = Vector2(480, 167)
+scale = Vector2(1.1537, 1.14926)
+
+[node name="lever" parent="." instance=ExtResource("2_2wo3a")]
+z_index = 5
+position = Vector2(507.345, 240.314)
+scale = Vector2(0.910482, 0.938567)
+
+[node name="Area2D" type="Area2D" parent="lever"]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lever/Area2D"]
+shape = SubResource("CircleShape2D_h5ojt")
+
+[node name="Label" type="Label" parent="lever"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_right = 52.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "[E] to interact"
+horizontal_alignment = 1
+
 [connection signal="done" from="player" to="village_head" method="_on_player_done"]
+[connection signal="done" from="player" to="golem" method="_on_player_done"]
+[connection signal="done" from="player" to="blacksmith" method="_on_player_done"]
+[connection signal="interactable" from="blacksmith" to="lever" method="_on_blacksmith_interactable"]
 [connection signal="body_entered" from="lever/Area2D" to="lever" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="lever/Area2D" to="lever" method="_on_area_2d_body_exited"]
