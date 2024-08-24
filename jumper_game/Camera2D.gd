@@ -25,12 +25,11 @@ func _process(delta):
 	handle_camera_shake(delta)
 
 func update_camera_position():
-	if player.position.y > ground_level and player.player_state != 420:
+	if player.position.y > ground_level and player.player_state < 420:
 		ground_level = player.position.y
 		position.y = ground_level
 		original_position = global_position
 		prop.generate(tilemap.local_to_map(global_position).y + 20)
-		print(ground_level)
 
 func handle_camera_shake(delta):
 	if shake_timer > 0:
@@ -38,7 +37,8 @@ func handle_camera_shake(delta):
 		var shake_offset = Vector2(randf_range(-SHAKE_AMOUNT, SHAKE_AMOUNT), randf_range(-SHAKE_AMOUNT, SHAKE_AMOUNT))
 		position = original_position + shake_offset
 	else:
-		position = original_position
+		position.y = original_position.y
+		position.x = 0
 
 func set_camera():
 	ground_level = 0
