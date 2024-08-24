@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://3l27piieqq6c"]
+[gd_scene load_steps=18 format=3 uid="uid://3l27piieqq6c"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_gyyb8"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_rw7hg"]
 [ext_resource type="PackedScene" uid="uid://bot411v44otox" path="res://character_body_2d.tscn" id="2_urdsr"]
 [ext_resource type="FontFile" uid="uid://brcmbeypa14n4" path="res://Assets/fonts/PlayMeGames-Demo.otf" id="3_05sda"]
 [ext_resource type="Texture2D" uid="uid://gkul1xpjb4rw" path="res://Assets/world_tileset.png" id="3_dw6jj"]
+[ext_resource type="Texture2D" uid="uid://dn5bj7nx5tpqo" path="res://Assets/retry.png" id="3_j7iea"]
 [ext_resource type="Script" path="res://Lable1.gd" id="4_72fgp"]
 [ext_resource type="Texture2D" uid="uid://bb526yswt6vyo" path="res://Assets/4_Seasons_Ground_Tiles.png" id="4_fqrrq"]
 [ext_resource type="Texture2D" uid="uid://ckx6mhkq05myo" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="5_scr2g"]
@@ -2648,6 +2649,16 @@ script = ExtResource("1_gyyb8")
 position = Vector2(0, 5)
 zoom = Vector2(5, 5)
 script = ExtResource("1_rw7hg")
+
+[node name="Button" type="Button" parent="Camera2D"]
+z_index = 5
+offset_left = 160.0
+offset_top = -94.0
+offset_right = 184.0
+offset_bottom = -70.0
+action_mode = 0
+icon = ExtResource("3_j7iea")
+expand_icon = true
 
 [node name="Lable1" type="RichTextLabel" parent="Camera2D"]
 z_index = 2
