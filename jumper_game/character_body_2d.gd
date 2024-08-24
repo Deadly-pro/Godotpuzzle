@@ -22,7 +22,7 @@ var player_state = 0 # 0 for normal, 420 for death, 69 for win
 func _physics_process(delta):
 	handle_animation()
 	handle_gravity(delta)
-	if player_state != 69:
+	if player_state < 420:
 		handle_movement()
 		handle_sword_swing(delta)
 	check_player_state()
@@ -46,8 +46,8 @@ func handle_movement():
 		velocity.y = JUMP_VELOCITY
 		has_jumped = true
 	var direction = Input.get_axis("left", "right")
-	if direction != 0 and is_on_floor():
-		velocity.x = direction * SPEED
+	if direction != 0:
+		velocity.x = direction * SPEED * (1 if is_on_floor() else 0.5)
 		facing_right = direction > 0
 		update_sword_position()
 	else:
@@ -93,21 +93,23 @@ func check_and_remove_tiles():
 	recursive_tile_remover(tile_position.x, tile_position.y)
 
 func check_player_state():
-	if player_state ==420:
+	if player_state >=420:
+		if player_state == 420:
+			velocity.y = -100
+			player_state = 421
 		collision_shape.disabled = true
 	else:
 		collision_shape.disabled = false
 
 func recursive_tile_remover(x, y):
 	var initial_tile_type = tilemap.get_cell_source_id(2, Vector2i(x, y))
-	if initial_tile_type == -1:
+	if initial_tile_type == -1 or player_state == 420:
 		return
 	remove_tiles(x, y, initial_tile_type)
 	camera.shake()
 
 func remove_tile_below(x = global_position.x, y = global_position.y):
-	var collision_shape = $CollisionShape2D  # Replace with your player's collision shape
-	var tile_position = tilemap.local_to_map(global_position + Vector2(0, collision_shape.shape.extents.y + 15))  
+	var tile_position = tilemap.local_to_map(global_position + Vector2(0, collision_shape.shape.extents.y + 10))  
 	recursive_tile_remover(tile_position.x, tile_position.y)
 
 func remove_tiles(x, y, tile_type):
