@@ -62,3 +62,8 @@ func move(delta):
 				current_state="NEW_DIR"
 				prev_pos=Vector2(0,0) 
 		move_and_slide()
+
+
+func _on_golem_peace():
+	panic=false
+	current_state="IDLE"

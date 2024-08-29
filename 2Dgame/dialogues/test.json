@@ -89,10 +89,13 @@
 		{"name":"King","chat":"Not so fast!! Thou shall answer my questions before you enter the rift"},
 		{"name":"You","chat":"Does this rift require a ticket or something?"},
 		{"name":"King","chat":"Ahhhh....... I don't think so"},
-		
-		
-		
 		],
+		"king_que":[{"name":"King","chat":"Answer me before the Holy Oblisks Questions Three. Are you ready?"},],
+		"king_que1":[{"name":"King","chat":"I am always hungry, I must always be fed. The finger I touch, will soon turn red.\n What am i?"},],
+		"king_que2":[{"name":"King","chat":"I am always hungry, I must always be fed. The finger I touch, will soon turn red.\n What am i?"},],
+		"king_que3":[{"name":"King","chat":"I am always hungry, I must always be fed. The finger I touch, will soon turn red.\n What am i?"},],
+		"king_wrong":[{"name":"King","chat":"HAHAHAHA!!!....WRONG.Try again... "},],
+		
 		"npc_1":[],
 	},
 }

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 const speed = 100
+signal peace
 var is_moving=true
 var is_chating=false
 var in_range=false
@@ -58,6 +59,8 @@ func _process(delta):
 			elif  chatindex==2:
 				await $"../player".dialouge("first_level","golem_2")
 				chatindex+=1
+				$stairsentry.disabled=true
+				emit_signal("peace")
 			else :
 				await $"../player".dialouge("first_level","golem_idle")
 			is_chating=true

@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://dyowwu7g83dmo"]
+
+[ext_resource type="Texture2D" uid="uid://s8yqrwr2q2tc" path="res://prefabs/Explosions and Extras/FlyingObelisk_no_lightnings_no_letter.png" id="1_8j6yo"]
+[ext_resource type="Script" path="res://scripts/oblisk.gd" id="1_gn6fc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl1kd"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(0, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ke1t"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy52j"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(400, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exed1"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(600, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01cj0"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(800, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtcu8"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(1000, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wocx7"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(1200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hac5f"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(1400, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywrvb"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(1600, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxmyl"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(1800, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iy2f"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(2000, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8iya"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(2200, 0, 200, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scnbv"]
+atlas = ExtResource("1_8j6yo")
+region = Rect2(2400, 0, 200, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ro6ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl1kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ke1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy52j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exed1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01cj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtcu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wocx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hac5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywrvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxmyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iy2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8iya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scnbv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lm8ql"]
+radius = 114.039
+
+[sub_resource type="LabelSettings" id="LabelSettings_2a3ty"]
+
+[node name="oblisk" type="Node2D"]
+script = ExtResource("1_gn6fc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ro6ai")
+autoplay = "default"
+frame_progress = 0.731576
+
+[node name="interaction area" type="Area2D" parent="."]
+position = Vector2(3, 2)
+collision_layer = 3
+collision_mask = 3
+input_pickable = false
+monitorable = false
+
+[node name="circle" type="CollisionShape2D" parent="interaction area"]
+scale = Vector2(1.48416, 2.47217)
+shape = SubResource("CircleShape2D_lm8ql")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -107.0
+offset_top = -256.0
+offset_right = -67.0
+offset_bottom = -233.0
+scale = Vector2(5.39156, 5.99821)
+text = "[E]"
+label_settings = SubResource("LabelSettings_2a3ty")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="interaction area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction area" to="." method="_on_interaction_area_body_exited"]

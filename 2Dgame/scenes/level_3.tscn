@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgawxkw1gd2tl"]
+
+[ext_resource type="PackedScene" uid="uid://ci7obkqja56ly" path="res://scenes/agnis.tscn" id="1_4t64r"]
+[ext_resource type="PackedScene" uid="uid://dyowwu7g83dmo" path="res://scenes/oblisk.tscn" id="2_bmdsw"]
+
+[node name="level_3" type="Node2D"]
+
+[node name="Agnis" parent="." instance=ExtResource("1_4t64r")]
+position = Vector2(1330, -83.9999)
+scale = Vector2(6.51646, 6.96602)
+
+[node name="oblisk" parent="Agnis" instance=ExtResource("2_bmdsw")]
+position = Vector2(-203.792, 279.93)
+scale = Vector2(0.312539, 0.28997)
+
+[node name="oblisk2" parent="Agnis" instance=ExtResource("2_bmdsw")]
+position = Vector2(-383.337, 286.677)
+scale = Vector2(0.312539, 0.28997)
+
+[node name="oblisk3" parent="Agnis" instance=ExtResource("2_bmdsw")]
+position = Vector2(-45.4234, 285.672)
+scale = Vector2(0.312539, 0.28997)

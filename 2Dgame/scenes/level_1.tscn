@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://4ms35k1ps1gl"]
+[gd_scene load_steps=39 format=3 uid="uid://4ms35k1ps1gl"]
 
-[ext_resource type="Script" path="res://scenes/level_1.gd" id="1_bffs2"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_bffs2"]
 [ext_resource type="PackedScene" uid="uid://coyerkmic7oyn" path="res://scenes/player.tscn" id="1_bkgdn"]
 [ext_resource type="PackedScene" uid="uid://fqu4hgij4mc" path="res://scenes/lever.tscn" id="2_2wo3a"]
 [ext_resource type="PackedScene" uid="uid://b1hajjra8ao42" path="res://scenes/gate.tscn" id="3_bhxf0"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://no6w0tm2o0ug" path="res://scenes/golem.tscn" id="14_l77w4"]
 [ext_resource type="PackedScene" uid="uid://b8ykrt17txaej" path="res://scenes/panicked_npc.tscn" id="14_sr8ow"]
 [ext_resource type="PackedScene" uid="uid://bgl1nu8rarqoi" path="res://scenes/coin.tscn" id="16_l2ko7"]
+[ext_resource type="PackedScene" uid="uid://bpsy0bqdllvso" path="res://scenes/portal.tscn" id="21_mw8cl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uaatf"]
 texture = ExtResource("5_1ue0v")
@@ -2722,8 +2723,65 @@ sources/9 = SubResource("TileSetAtlasSource_120cg")
 sources/4 = SubResource("TileSetAtlasSource_2rsrc")
 sources/1 = SubResource("TileSetAtlasSource_7eb1o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n82r3"]
+size = Vector2(19.6758, 20)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5ojt"]
 radius = 120.785
+
+[sub_resource type="Animation" id="Animation_kw63k"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mg37v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yam4f"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qv7dl"]
+_data = {
+"RESET": SubResource("Animation_mg37v"),
+"fade_in": SubResource("Animation_kw63k"),
+"fade_out": SubResource("Animation_yam4f")
+}
 
 [node name="level1" type="Node2D"]
 script = ExtResource("1_bffs2")
@@ -2738,6 +2796,7 @@ unique_name_in_owner = true
 z_index = 4
 position = Vector2(910, -96)
 scale = Vector2(7.27262, 6.35904)
+state = "on"
 
 [node name="key" parent="." instance=ExtResource("4_vfbgu")]
 z_index = 5
@@ -2829,8 +2888,14 @@ position = Vector2(916, 368)
 current_state = "MOVE"
 
 [node name="golem" parent="." instance=ExtResource("14_l77w4")]
-position = Vector2(618, -406)
+position = Vector2(589, -417)
 scale = Vector2(0.725966, 0.726854)
+current_state = "IDLE"
+
+[node name="stairsentry" type="CollisionShape2D" parent="golem"]
+position = Vector2(148.767, -101.809)
+scale = Vector2(4.55564, 1.12976)
+shape = SubResource("RectangleShape2D_n82r3")
 
 [node name="gear" parent="." instance=ExtResource("16_l2ko7")]
 position = Vector2(188, -172)
@@ -2873,12 +2938,36 @@ grow_horizontal = 2
 text = "[E] to interact"
 horizontal_alignment = 1
 
+[node name="portal" parent="." instance=ExtResource("21_mw8cl")]
+z_index = 10
+position = Vector2(694, -680)
+scale = Vector2(1.71846, 1.72223)
+
+[node name="transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qv7dl")
+}
+
+[node name="ColorRect" type="ColorRect" parent="transition"]
+z_index = 12
+offset_left = 186.0
+offset_top = -823.0
+offset_right = 226.0
+offset_bottom = -783.0
+scale = Vector2(23.8316, 13.5496)
+color = Color(0, 0, 0, 0)
+
 [connection signal="done" from="player" to="village_head" method="_on_player_done"]
 [connection signal="done" from="player" to="golem" method="_on_player_done"]
 [connection signal="done" from="player" to="blacksmith" method="_on_player_done"]
 [connection signal="ready" from="player" to="." method="_on_player_ready"]
 [connection signal="ready" from="gate" to="village_head" method="_on_gate_ready"]
+[connection signal="peace" from="golem" to="TileMap/panicked_npc2" method="_on_golem_peace"]
+[connection signal="peace" from="golem" to="TileMap/panicked_npc3" method="_on_golem_peace"]
+[connection signal="peace" from="golem" to="TileMap/panicked_npc" method="_on_golem_peace"]
+[connection signal="peace" from="golem" to="TileMap/panicked_npc4" method="_on_golem_peace"]
 [connection signal="interactable" from="blacksmith" to="village_head" method="_on_blacksmith_interactable"]
 [connection signal="interactable" from="blacksmith" to="lever" method="_on_blacksmith_interactable"]
 [connection signal="body_entered" from="lever/Area2D" to="lever" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="lever/Area2D" to="lever" method="_on_area_2d_body_exited"]
+[connection signal="transition" from="portal" to="." method="_on_portal_transition"]

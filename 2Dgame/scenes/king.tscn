@@ -1,78 +1,70 @@
-[gd_scene load_steps=18 format=3 uid="uid://nuxem0ppxac4"]
+[gd_scene load_steps=16 format=3 uid="uid://nuxem0ppxac4"]
 
 [ext_resource type="Script" path="res://scripts/king.gd" id="1_s3eke"]
-[ext_resource type="Texture2D" uid="uid://71ghrc436100" path="res://prefabs/NPCS/Male1.png" id="1_vy0xv"]
+[ext_resource type="Texture2D" uid="uid://dqj5ihmhsskye" path="res://prefabs/NPCS/King_Sprite.png" id="2_b54wd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jflg"]
 radius = 114.039
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw04g"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(128, 96, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiih2"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ql0a0"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(160, 96, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6prtu"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxwnf"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(192, 96, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdglb"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fj1bo"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(224, 96, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_apeo6"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhyvu"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(128, 48, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwlm7"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4fon"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(160, 48, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_08aa4"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy55g"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(192, 48, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm4y6"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_im28o"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(224, 48, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jit2h"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8gfu"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(128, 0, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sgik"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2clqi"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(160, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yri80"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(192, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eaoc0"]
-atlas = ExtResource("1_vy0xv")
-region = Rect2(224, 0, 32, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1lwi"]
+atlas = ExtResource("2_b54wd")
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l0o6q"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiih2")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aw04g")
+"texture": SubResource("AtlasTexture_6prtu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ql0a0")
+"texture": SubResource("AtlasTexture_wdglb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yxwnf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fj1bo")
+"texture": SubResource("AtlasTexture_apeo6")
 }],
 "loop": true,
 "name": &"walk_bk",
@@ -80,16 +72,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lhyvu")
+"texture": SubResource("AtlasTexture_hwlm7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q4fon")
+"texture": SubResource("AtlasTexture_08aa4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dy55g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_im28o")
+"texture": SubResource("AtlasTexture_mm4y6")
 }],
 "loop": true,
 "name": &"walk_fr",
@@ -97,16 +86,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p8gfu")
+"texture": SubResource("AtlasTexture_jit2h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2clqi")
+"texture": SubResource("AtlasTexture_4sgik")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yri80")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eaoc0")
+"texture": SubResource("AtlasTexture_y1lwi")
 }],
 "loop": true,
 "name": &"walk_sd",
@@ -118,7 +104,9 @@ radius = 14.0
 height = 48.0
 
 [node name="king" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_s3eke")
+current_state = "MOVE"
 
 [node name="interaction area" type="Area2D" parent="."]
 collision_layer = 3
@@ -127,9 +115,12 @@ input_pickable = false
 monitorable = false
 
 [node name="circle" type="CollisionShape2D" parent="interaction area"]
+scale = Vector2(2.7563, 2.69691)
 shape = SubResource("CircleShape2D_4jflg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -16)
+scale = Vector2(5.88889, 7.45455)
 sprite_frames = SubResource("SpriteFrames_l0o6q")
 animation = &"idle"
 autoplay = "idle"
@@ -137,5 +128,22 @@ autoplay = "idle"
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(-7, -4)
+scale = Vector2(5.99625, 5.03286)
 shape = SubResource("CapsuleShape2D_erxuc")
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+offset_left = -144.0
+offset_top = -208.0
+offset_right = -39.0
+offset_bottom = -185.0
+scale = Vector2(3.03952, 3.21979)
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "[E] to interact
+"
+
+[connection signal="body_entered" from="interaction area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction area" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
