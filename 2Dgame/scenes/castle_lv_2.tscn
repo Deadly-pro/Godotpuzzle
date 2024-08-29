@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cd56yn7cg2sl8"]
+[gd_scene load_steps=44 format=3 uid="uid://cd56yn7cg2sl8"]
 
 [ext_resource type="Texture2D" uid="uid://dauj8v37ww2c7" path="res://prefabs/Texture/TX Tileset Grass.png" id="1_dyowm"]
 [ext_resource type="Texture2D" uid="uid://bp8kjj3msln7c" path="res://prefabs/Texture/TX Shadow.png" id="2_lwsjb"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://h02o4ubkexdx" path="res://scenes/fire.tscn" id="9_festn"]
 [ext_resource type="Texture2D" uid="uid://ddjrr5c0xp561" path="res://prefabs/WaterFall(Water).png" id="10_qq068"]
 [ext_resource type="PackedScene" uid="uid://b1hajjra8ao42" path="res://scenes/gate.tscn" id="12_2dwxk"]
+[ext_resource type="PackedScene" uid="uid://nuxem0ppxac4" path="res://scenes/king.tscn" id="19_3dedr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uaatf"]
 texture = ExtResource("1_dyowm")
@@ -7660,3 +7661,7 @@ scale = Vector2(11.723, 9.8748)
 visible = false
 position = Vector2(654, 455)
 scale = Vector2(11.723, 9.8748)
+
+[node name="king" parent="." instance=ExtResource("19_3dedr")]
+position = Vector2(-7, -65)
+scale = Vector2(1.03491, 1.2121)

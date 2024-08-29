@@ -10,7 +10,7 @@
     ],
     "correctAnswer": "Paris",
     "points": 100,
-    "attempts": 6
+    "attempts": 2
   },
   {
     "id": 2,
@@ -23,6 +23,6 @@
     ],
     "correctAnswer": "4",
     "points": 50,
-    "attempts": 3
+    "attempts": 2
   }
 ]

@@ -82,7 +82,17 @@
 	"second_level":{
 		"king":[{"name":"King","chat":"Oh no this is the end, we are doomed!!!!!!!!"},
 		{"name":"King","chat":"The Sacred artifact was the only line of defense and it was attacked."},
-		{"name":"King","chat":"WE ARE DOOMED!!!!"},],
+		{"name":"King","chat":"WE ARE DOOMED!!!!"},
+		{"name":"You","chat":"Ahh what's your problem and why is the rift in space the most ignored topic at the moment?"},
+		{"name":"King","chat":"That is the reamins of the battle after the ENTITY too away our Artifact to creat its own lair"},
+		{"name":"You","chat":"Well then we no time to waste then. Lets head to Battle i've been craving for some battle"},
+		{"name":"King","chat":"Not so fast!! Thou shall answer my questions before you enter the rift"},
+		{"name":"You","chat":"Does this rift require a ticket or something?"},
+		{"name":"King","chat":"Ahhhh....... I don't think so"},
+		
+		
+		
+		],
 		"npc_1":[],
 	},
 }

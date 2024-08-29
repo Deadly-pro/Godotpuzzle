@@ -25,7 +25,7 @@ app.post('/api/login', async (req, res) => {
     
     let user = users.find(u => u.email === email);
     if (!user) {
-        user = { name, email, score: 0, answeredQuestions: [] };
+        user = { name, email, score: 0, answeredQuestions: {} };
         users.push(user);
         await writeJsonFile('users.json', users);
     }
@@ -47,25 +47,30 @@ app.post('/api/submit-answer', async (req, res) => {
     const question = questions.find(q => q.id === questionId);
     const user = users.find(u => u.email === email);
     
-    // Check if the user has already answered the question
-    if (user.answeredQuestions.includes(questionId)) {
-        return res.status(400).json({ error: 'You have already answered this question.' });
+    if (!question || !user) {
+        return res.status(400).json({ error: 'Invalid question or user' });
     }
+
+    const isCorrect = answer === question.correctAnswer;
     
-    question.attempts++;
-    const decayFactor = 1 - (question.attempts * 0.1);
-    const pointsEarned = Math.round(question.points * decayFactor);
-    
-    if (answer === question.correctAnswer) {
-        user.score += pointsEarned;
-        user.answeredQuestions.push(questionId);
+    if (!user.answeredQuestions[questionId] || !user.answeredQuestions[questionId].isCorrect) {
+        if (isCorrect) {
+            const decayFactor = 1 - (question.attempts * 0.1);
+            const pointsEarned = Math.round(question.points * decayFactor);
+            user.score += pointsEarned;
+            question.attempts++;
+        }
+        
+        user.answeredQuestions[questionId] = { answer, isCorrect };
         await writeJsonFile('users.json', users);
-        res.json({ correct: true, pointsEarned, newScore: user.score });
-    } else {
-        res.json({ correct: false, pointsEarned: 0, newScore: user.score });
+        await writeJsonFile('questions.json', questions);
     }
-    
-    await writeJsonFile('questions.json', questions);
+
+    res.json({ 
+        correct: isCorrect, 
+        newScore: user.score, 
+        message: isCorrect ? 'Correct!' : 'Incorrect. Try again!'
+    });
 });
 
 app.get('/api/leaderboard', async (req, res) => {
@@ -78,36 +83,4 @@ app.get('/api/leaderboard', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
-});
-
-// ... (rest of the code remains the same)
-
-app.post('/api/submit-answer', async (req, res) => {
-    const { email, questionId, answer } = req.body;
-    
-    let questions = await readJsonFile('questions.json');
-    let users = await readJsonFile('users.json');
-    
-    const question = questions.find(q => q.id === questionId);
-    const user = users.find(u => u.email === email);
-    
-    // Check if the user has already answered the question
-    if (user.answeredQuestions.includes(questionId)) {
-        return res.status(400).json({ error: 'You have already answered this question.' });
-    }
-    
-    question.attempts++;
-    const decayFactor = 1 - (question.attempts * 0.1);
-    const pointsEarned = Math.round(question.points * decayFactor);
-    
-    if (answer === question.correctAnswer) {
-        user.score += pointsEarned;
-        user.answeredQuestions.push(questionId);
-        await writeJsonFile('users.json', users);
-        res.json({ correct: true, pointsEarned, newScore: user.score });
-    } else {
-        res.json({ correct: false, pointsEarned: 0, newScore: user.score });
-    }
-    
-    await writeJsonFile('questions.json', questions);
 });

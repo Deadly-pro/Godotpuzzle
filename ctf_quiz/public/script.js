@@ -1,7 +1,6 @@
 let currentUser = null;
 let questions = [];
 let currentQuestionIndex = 0;
-let answeredQuestions = {};
 
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
@@ -10,7 +9,6 @@ if (loginForm) {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         
-        // Email format validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
@@ -42,7 +40,6 @@ async function initQuiz() {
     await fetchQuestions();
     loadQuestion();
     updateLeaderboard();
-    setupNavigationButtons();
 }
 
 async function fetchQuestions() {
@@ -54,7 +51,6 @@ function loadQuestion() {
     const questionText = document.getElementById('questionText');
     const optionsContainer = document.getElementById('optionsContainer');
     const submitButton = document.getElementById('submitAnswer');
-    const questionNumberSpan = document.getElementById('questionNumber');
     
     if (currentQuestionIndex < questions.length) {
         const question = questions[currentQuestionIndex];
@@ -65,23 +61,20 @@ function loadQuestion() {
             const button = document.createElement('button');
             button.textContent = option;
             button.onclick = () => selectOption(index);
-            if (answeredQuestions[question.id] === index) {
-                button.classList.add('selected');
-            }
             optionsContainer.appendChild(button);
+        updateNavigationButtons();    
         });
         
         submitButton.style.display = 'block';
         submitButton.onclick = submitAnswer;
-        
-        questionNumberSpan.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
     } else {
         questionText.textContent = "Quiz completed!";
         optionsContainer.innerHTML = '';
         submitButton.style.display = 'none';
-        questionNumberSpan.textContent = '';
     }
 }
+
+let selectedOptionIndex = -1;
 
 function selectOption(index) {
     const optionButtons = document.querySelectorAll('#optionsContainer button');
@@ -92,18 +85,16 @@ function selectOption(index) {
             button.classList.remove('selected');
         }
     });
-    answeredQuestions[questions[currentQuestionIndex].id] = index;
+    selectedOptionIndex = index;
 }
 
 async function submitAnswer() {
-    const question = questions[currentQuestionIndex];
-    const selectedOptionIndex = answeredQuestions[question.id];
-    
-    if (selectedOptionIndex === undefined) {
+    if (selectedOptionIndex === -1) {
         alert('Please select an answer before submitting.');
         return;
     }
 
+    const question = questions[currentQuestionIndex];
     const selectedAnswer = question.options[selectedOptionIndex];
     
     const response = await fetch('/api/submit-answer', {
@@ -118,31 +109,21 @@ async function submitAnswer() {
     
     const result = await response.json();
     
+    if (result.error) {
+        alert(result.error);
+        return;
+    }
+    
     if (result.correct) {
         currentUser.score = result.newScore;
         document.getElementById('score').textContent = currentUser.score;
     }
     
+    currentQuestionIndex++;
+    selectedOptionIndex = -1;
+    loadQuestion();
     updateLeaderboard();
-}
-
-function setupNavigationButtons() {
-    const prevButton = document.getElementById('prevQuestion');
-    const nextButton = document.getElementById('nextQuestion');
     
-    prevButton.onclick = () => {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            loadQuestion();
-        }
-    };
-    
-    nextButton.onclick = () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            currentQuestionIndex++;
-            loadQuestion();
-        }
-    };
 }
 
 async function updateLeaderboard() {
@@ -157,169 +138,30 @@ async function updateLeaderboard() {
         leaderboardList.appendChild(li);
     });
 }
-// ... (previous code remains the same)
+function updateNavigationButtons() {
+    const prevButton = document.getElementById('prevQuestion');
+    const nextButton = document.getElementById('nextQuestion');
 
-async function initQuiz() {
-    await fetchQuestions();
-    createQuestionTabs();
-    loadQuestion();
-    updateLeaderboard();
-    setupNavigationButtons();
+    prevButton.disabled = currentQuestionIndex === 0;
+    nextButton.disabled = currentQuestionIndex === questions.length - 1;
 }
 
-function createQuestionTabs() {
-    const questionTabs = document.getElementById('questionTabs');
-    questions.forEach((_, index) => {
-        const tab = document.createElement('div');
-        tab.className = 'question-tab';
-        tab.textContent = index + 1;
-        tab.onclick = () => {
-            currentQuestionIndex = index;
-            loadQuestion();
-        };
-        questionTabs.appendChild(tab);
-    });
-}
-
-function loadQuestion() {
-    // ... (previous loadQuestion code)
-
-    // Update question tabs
-    updateQuestionTabs();
-}
-
-function updateQuestionTabs() {
-    const tabs = document.querySelectorAll('.question-tab');
-    tabs.forEach((tab, index) => {
-        tab.classList.remove('current', 'answered');
-        if (index === currentQuestionIndex) {
-            tab.classList.add('current');
-        }
-        if (answeredQuestions[questions[index].id] !== undefined) {
-            tab.classList.add('answered');
-        }
-    });
-}
-
-function selectOption(index) {
-    // ... (previous selectOption code)
-
-    // Update question tabs
-    updateQuestionTabs();
-}
-
-async function submitAnswer() {
-    // ... (previous submitAnswer code)
-
-    // Update question tabs
-    updateQuestionTabs();
-}
-
-// ... (rest of the code remains the same)
-// ... (previous code remains the same)
-
-async function initQuiz() {
-    await fetchQuestions();
-    loadQuestion();
-    updateLeaderboard();
-    setupNavigationButtons();
-    populateAllQuestionsList();
-}
-
-// ... (other functions remain the same)
-
-function loadQuestion() {
-    const questionText = document.getElementById('questionText');
-    const optionsContainer = document.getElementById('optionsContainer');
-    const submitButton = document.getElementById('submitAnswer');
-    const questionNumberSpan = document.getElementById('questionNumber');
-    
-    if (currentQuestionIndex < questions.length) {
-        const question = questions[currentQuestionIndex];
-        questionText.textContent = question.text;
-        
-        optionsContainer.innerHTML = '';
-        question.options.forEach((option, index) => {
-            const button = document.createElement('button');
-            button.textContent = option;
-            button.onclick = () => selectOption(index);
-            if (answeredQuestions[question.id] === index) {
-                button.classList.add('selected');
-            }
-            optionsContainer.appendChild(button);
-        });
-        
-        submitButton.style.display = 'block';
-        submitButton.onclick = submitAnswer;
-        
-        questionNumberSpan.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-        updateAllQuestionsListStyles();
-    } else {
-        questionText.textContent = "Quiz completed!";
-        optionsContainer.innerHTML = '';
-        submitButton.style.display = 'none';
-        questionNumberSpan.textContent = '';
+function goToPreviousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
     }
 }
 
-function populateAllQuestionsList() {
-    const allQuestionsList = document.getElementById('allQuestionsList');
-    allQuestionsList.innerHTML = '';
-    
-    questions.forEach((question, index) => {
-        const li = document.createElement('li');
-        li.textContent = `Q. ${index + 1}`;
-        li.onclick = () => {
-            currentQuestionIndex = index;
-            loadQuestion();
-        };
-        allQuestionsList.appendChild(li);
-    });
-}
-
-function updateAllQuestionsListStyles() {
-    const allQuestionsItems = document.querySelectorAll('#allQuestionsList li');
-    allQuestionsItems.forEach((item, index) => {
-        item.classList.remove('current', 'answered');
-        if (index === currentQuestionIndex) {
-            item.classList.add('current');
-        }
-        if (answeredQuestions[questions[index].id] !== undefined) {
-            item.classList.add('answered');
-        }
-    });
-}
-
-async function submitAnswer() {
-    const question = questions[currentQuestionIndex];
-    const selectedOptionIndex = answeredQuestions[question.id];
-    
-    if (selectedOptionIndex === undefined) {
-        alert('Please select an answer before submitting.');
-        return;
+function goToNextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
     }
-
-    const selectedAnswer = question.options[selectedOptionIndex];
-    
-    const response = await fetch('/api/submit-answer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email: currentUser.email,
-            questionId: question.id,
-            answer: selectedAnswer
-        })
-    });
-    
-    const result = await response.json();
-    
-    if (result.correct) {
-        currentUser.score = result.newScore;
-        document.getElementById('score').textContent = currentUser.score;
-    }
-    
-    updateLeaderboard();
-    updateAllQuestionsListStyles();
 }
 
-// ... (rest of the code remains the same)
+// Add event listeners for navigation buttons
+document.getElementById('prevQuestion').addEventListener('click', goToPreviousQuestion);
+document.getElementById('nextQuestion').addEventListener('click', goToNextQuestion);
+
+// Modify the submitAnswer function

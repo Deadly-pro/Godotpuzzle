@@ -1,28 +1,32 @@
 [
   {
+    "name": "Pari",
+    "email": "pari@gmail.com",
+    "score": 0,
+    "answeredQuestions": []
+  },
+  {
     "name": "Prajwal R",
     "email": "test@gmail.com",
-    "score": 120,
+    "score": 30,
     "answeredQuestions": [
-      1,
-      2
+      1
     ]
   },
   {
     "name": "Prajwal R",
     "email": "ruyketsu.prajwal@gmail.com",
-    "score": 75,
+    "score": 270,
     "answeredQuestions": [
       1,
-      2
-    ]
-  },
-  {
-    "name": "prajwal ",
-    "email": "bruh@13.com",
-    "score": 50,
-    "answeredQuestions": [
-      1
+      {
+        "answer": "Paris",
+        "isCorrect": true
+      },
+      {
+        "answer": "4",
+        "isCorrect": true
+      }
     ]
   }
 ]
