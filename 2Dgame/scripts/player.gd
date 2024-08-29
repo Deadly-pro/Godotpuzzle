@@ -2,7 +2,7 @@ extends CharacterBody2D
 signal done
 var can_move=true
 var inventory={"key":10,"gear":10}
-var invsprdat={"heart":0,"power":1,"key":7}
+var Score=0
 const max_speed = 300.0
 const friction = 1000.0
 const accel =1500
@@ -27,6 +27,7 @@ func player_movement(delta):
 	
 	move_and_slide()
 func _picked(item):
+	Score+=300
 	match(item):
 		"key": inventory["key"]+=1
 		"gear":inventory["gear"]+=1

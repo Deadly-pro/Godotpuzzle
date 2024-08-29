@@ -8,7 +8,7 @@ var d_active=false
 signal  dialouge_done
 
 func _ready():
-	$NinePatchRect/instuction/ColorRect.visible=true
+	$NinePatchRect/instuction/ColorRect.visible=false
 	$NinePatchRect/name.visible=false
 	$NinePatchRect/chat.visible=false
 	$"../ColorRect".visible=false

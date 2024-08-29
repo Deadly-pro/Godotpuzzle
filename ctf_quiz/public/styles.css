@@ -53,8 +53,10 @@ button:hover {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position:relative;
-    
+    position:fixed;
+    left: 20px;
+    top: 20px;
+    bottom: 20px;        
 }
 
 .quiz-content {
@@ -160,3 +162,129 @@ button:hover {
 .logo img {
     max-height: 200px;
 }
+/* ... (previous styles remain the same) */
+
+.navigation-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+#questionNumber {
+    font-size: 18px;
+    color: #fff;
+}
+/* ... (previous styles remain the same) */
+
+.question-nav {
+    margin-bottom: 20px;
+}
+
+.question-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.question-tab {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.question-tab:hover {
+    background-color: #e0e0e0;
+}
+
+.question-tab.current {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.question-tab.answered {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* ... (rest of the styles remain the same) */
+/* ... (previous styles remain the same) */
+
+.quiz-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    margin-right: 20px;
+}
+
+.all-questions {
+    background-color: #ef7e19;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: fixed;
+    right: 20px;
+}
+
+.quiz-content {
+    flex-grow: 1;
+    background-color: #0D2040;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#leaderboardList, #allQuestionsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leaderboardList li, #allQuestionsList li {
+    margin-bottom: 5px;
+}
+
+#allQuestionsList li {
+    cursor: pointer;
+}
+
+#allQuestionsList li:hover {
+    text-decoration: underline;
+}
+
+#allQuestionsList li.current {
+    font-weight: bold;
+}
+
+#allQuestionsList li.answered {
+    color: #28a745;
+}
+
+/* ... (rest of the styles remain the same) */

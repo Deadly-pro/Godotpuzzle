@@ -27,7 +27,6 @@
 			{"name":"magistrate","chat":"Thank you for your great service Sir"},
 			{"name":"You","chat":"uhhh... okay i did LIETERALLY NOTHING THOUGH?"},
 			],
-		
 		"blacksmith1":[
 			{"name":"blacksmith","chat":"This won't seem like an easy fix. WELP nothing we can let's go home and sleep "},
 			{"name":"You","chat":"Hey!! Don't go try to escape reality that quick at least give it a try"},
@@ -72,10 +71,19 @@
 			{"name":"You","chat":"Hey you Golem what's your deal with these people anyway?"},
 			{"name":"Golem","chat":"I am the gaurdian of the Artifact. The one singular object that has the highest authority in the world"},
 			{"name":"Panicking Villagers","chat":"You were the one who was meant to gaurd the Artifact and now you've abandoned your duties!!!!!"},
-			{"name":"Golem","chat":""},
-			{"name":"You","chat":"Hey you Golem wat's your deal with these people anyway?"},
-		
+			{"name":"Golem","chat":"I DIDN'T DO SH*T BRO!!!!!!!!!!!... It wasn't me or under my control trust me that THING JUST took control of me "},
+			{"name":"You","chat":"Hey Calm down all of you. Now isn't the time to be fighting we have bigger issues if that ARTIFACT has such power its first priority to get it back"},
+			{"name":"Golem","chat":"Yes what you have stated dear esteemed hero is true. Here climb the stairs and go to the King's palace he shall guide you to recalim the ARTIFACT "},
+			{"name":"You","chat":"The ARTIFACT isn't my luggage though. Welp im bored of event too anyway let's go then."},
 		],
+		"golem_idle":[
+			{"name":"You","chat":"What ya looking I'm just your friendly neighbourhood Golem. "},]
 	 },
+	"second_level":{
+		"king":[{"name":"King","chat":"Oh no this is the end, we are doomed!!!!!!!!"},
+		{"name":"King","chat":"The Sacred artifact was the only line of defense and it was attacked."},
+		{"name":"King","chat":"WE ARE DOOMED!!!!"},],
+		"npc_1":[],
+	},
 }
 
