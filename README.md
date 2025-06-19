@@ -43,4 +43,4 @@ Each subfolder is a standalone Godot project. Open any of them using the Godot P
 1. Download and install the [Godot Engine](https://godotengine.org/download).
 2. Clone this repository:
    ```bash
-   git clone https://github.com/PrakyathPNayak/Godotpuzzle.git
+   git clone https://github.com/Deadly-pro/Godotpuzzle.git
